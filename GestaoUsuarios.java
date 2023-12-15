@@ -49,7 +49,7 @@ public class GestaoUsuarios {
 
     for (Usuario u : this.listaDeUsuarios) {
       encontrado = true;
-      String senha;
+  
       if (u.idUsuario == id) {
         System.out.println("Informe o nova senha: ");
         // u.setSenha() = scan.next();

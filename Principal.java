@@ -23,7 +23,7 @@ public class Principal {
 
         // Fazer a validação do login
         do {
-          EntradaSaida.escolherOpcaoMenuLogin();2
+          EntradaSaida.escolherOpcaoMenuLogin();
           opcaoLogin = scan.nextInt();
           if (opcaoLogin == 1) {
             String senha;

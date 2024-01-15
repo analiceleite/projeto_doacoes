@@ -1,7 +1,7 @@
 
 public class Usuario {
     int idUsuario;
-    private String senha, login;
+    private String senha, login, nomeUsuario;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -27,5 +27,14 @@ public class Usuario {
         this.login = login;
     }
 
+    
+    public String getNome() {
+        return nomeUsuario;
+    }
+
+    public void setNome(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+    
     
 }

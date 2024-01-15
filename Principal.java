@@ -8,7 +8,6 @@ public class Principal {
         GestaoUsuarios gu = new GestaoUsuarios();
         GestaoVoluntario gv = new GestaoVoluntario();
         Usuario u = new Usuario();
-        boolean voluntarioValido = Validacao.validarIdadeVoluntario(0);
         int opcao = 0;
         int opcaoLogin = 0;
         int opcaoCategorias = 0;
@@ -18,28 +17,33 @@ public class Principal {
         int opcaoMenuPrincipal = 0;
         int opcaoMenuEstoque = 0;
         int opcaoMenuVoluntario = 0;
+        boolean voluntarioValido = Validacao.validarIdadeVoluntario(0);
         boolean jaLogou = false;
-        boolean buscarLogin = false;
+    
 
-        // Fazer a validação do login
-        do {
+        // Login User
+        do { 
           EntradaSaida.escolherOpcaoMenuLogin();
-          opcaoLogin = scan.nextInt();
+          opcaoLogin = Integer.parseInt(System.console().readLine("Opção selecionada: "));
           if (opcaoLogin == 1) {
-            String senha;
-            String login;
-            System.out.println("Login: ");
-            login = scan.next();
-            System.out.println("Senha: ");
-            senha = scan.next();
-            jaLogou = gu.buscarLogin(login, senha);
+
+            String nomeUsuario = "";
+            String senha = "admin";
+            String login = "admin";
+
+            login = System.console().readLine("Login: ");
+            senha = System.console().readLine("Senha: ");
+            jaLogou = gu.buscarLogin(login, senha, nomeUsuario);
+
 
           } else if (opcaoLogin == 2) {
-            System.out.println("----Tela de cadastro----");
+            System.out.println("\n---- Tela de cadastro ----\n");
+            System.out.println("Informe seu nome: ");
+            u.setNome(scan.next());
             System.out.println("Informe o login da sua conta: ");
-            u.setSenha(scan.next());
-            System.out.println("Informa a senha da sua conta: ");
             u.setLogin(scan.next());
+            System.out.println("Informa a senha da sua conta: ");
+            u.setSenha(scan.next());
             gu.adicionarUsuario(u);
             jaLogou = false;
             
@@ -48,9 +52,9 @@ public class Principal {
           }
         } while (!jaLogou);
 
+        // Login Admin
         if (u.getLogin().equals("admin") && u.getSenha().equals("admin")) {
-          // funções admin
-          System.out.println("Bem vindo administrador!");
+          System.out.println("\n Bem vindo administrador!\n ");
           do {
             EntradaSaida.escolherOpcaoMenuADM();
             opcao = scan.nextInt();
@@ -63,19 +67,19 @@ public class Principal {
 
                 switch (opcaoCategorias) {
                   case 1:
-                    System.out.println("Insira a descrição da doação: ");
+                    System.out.println("\nInsira a descrição da doação: ");
                     d.descricao = scan.next();
                     System.out.println("Insira a quantidade: ");
-                    d.quantidade = scan.next();
+                    d.quantidade = scan.nextInt();
                     d.categoria = "Vestuário";
                     ge.cadastrarDoacao(d);
                     EntradaSaida.escolherOpcaoMenuADM();
                     break;
                   case 2:
-                    System.out.println("Insira a descrição da doação: ");
+                    System.out.println("\nInsira a descrição da doação: ");
                     d.descricao = scan.next();
                     System.out.println("Insira a quantidade: ");
-                    d.quantidade = scan.next();
+                    d.quantidade = scan.nextInt();
                     d.categoria = "Alimento";
                     ge.cadastrarDoacao(d);
                     EntradaSaida.escolherOpcaoMenuADM();
@@ -85,7 +89,7 @@ public class Principal {
                     System.out.println("Insira a descrição da doação: ");
                     d.descricao = scan.next();
                     System.out.println("Insira a quantidade: ");
-                    d.quantidade = scan.next();
+                    d.quantidade = scan.nextInt();
                     d.categoria = "Móveis";
                     ge.cadastrarDoacao(d);
                     EntradaSaida.escolherOpcaoMenuADM();
@@ -95,7 +99,7 @@ public class Principal {
                     System.out.println("Insira a descrição da doação: ");
                     d.descricao = scan.next();
                     System.out.println("Insira o valor: ");
-                    d.quantidade = scan.next();
+                    d.quantidade = scan.nextInt();
                     d.categoria = "Dinheiro";
                     ge.cadastrarDoacao(d);
                     EntradaSaida.escolherOpcaoMenuADM();
@@ -217,10 +221,9 @@ public class Principal {
 
                 switch (opcaoCategorias) {
                   case 1:
-                    System.out.println("Insira a descrição da doação: ");
-                    d.descricao = scan.next();
+                    d.descricao = System.console().readLine("Insira a descrição da doação: ");
                     System.out.println("Insira a quantidade: ");
-                    d.quantidade = scan.next();
+                    d.quantidade = scan.nextInt();
                     d.categoria = "Vestuário";
                     ge.cadastrarDoacao(d);
                     EntradaSaida.escolherOpcaoMenuADM();
@@ -229,7 +232,7 @@ public class Principal {
                     System.out.println("Insira a descrição da doação: ");
                     d.descricao = scan.next();
                     System.out.println("Insira a quantidade: ");
-                    d.quantidade = scan.next();
+                    d.quantidade = scan.nextInt();
                     d.categoria = "Alimento";
                     ge.cadastrarDoacao(d);
                     EntradaSaida.escolherOpcaoMenuADM();
@@ -239,7 +242,7 @@ public class Principal {
                     System.out.println("Insira a descrição da doação: ");
                     d.descricao = scan.next();
                     System.out.println("Insira a quantidade: ");
-                    d.quantidade = scan.next();
+                    d.quantidade = scan.nextInt();
                     d.categoria = "Móveis";
                     ge.cadastrarDoacao(d);
                     EntradaSaida.escolherOpcaoMenuADM();
@@ -249,7 +252,7 @@ public class Principal {
                     System.out.println("Insira a descrição da doação: ");
                     d.descricao = scan.next();
                     System.out.println("Insira o valor: ");
-                    d.quantidade = scan.next();
+                    d.quantidade = scan.nextInt();
                     d.categoria = "Dinheiro";
                     ge.cadastrarDoacao(d);
                     EntradaSaida.escolherOpcaoMenuADM();

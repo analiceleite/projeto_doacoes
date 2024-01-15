@@ -26,17 +26,18 @@ public class GestaoEstoque {
   // Visualizar doações cadastradas
   public String mostrarDoacoesCadastradas() {
     String mensagem = "";
+
     for (Doacao d : this.doacoesCadastradas) {
-      mensagem += "\nAs informações das doações cadastradas são: ";
-      mensagem += "\n ID: " +
-          d.id +
-          "\n Categoria: " +
-          d.categoria +
-          "\n Descrição: " +
-          d.descricao +
-          "\n Quantidade: " +
-          d.quantidade + "\n";
+    System.out.println( mensagem += "\nAs informações das doações cadastradas são: \n" + "\n ID: " +
+    d.id +
+    "\n Categoria: " +
+    d.categoria +
+    "\n Descrição: " +
+    d.descricao +
+    "\n Quantidade: " +
+    d.quantidade + "\n");
     }
+    
     return mensagem;
   }
 

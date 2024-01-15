@@ -13,17 +13,18 @@ public class GestaoUsuarios {
             }
         }
         Usuario.idUsuario = id;
-        this.listaDeUsuarios.add(Usuario);
+        listaDeUsuarios.add(Usuario);
     }
 
-   public boolean buscarLogin(String login, String senha) {
+   public boolean buscarLogin(String login, String senha, String nome) {
         for (Usuario u : this.listaDeUsuarios) {
-          if (login.equals(u.getLogin()) && senha.equals(u.getSenha())) {
-            System.out.println("Bem vindo usuário!!!");
-            return true;
+          if ((u.getLogin().equals(login)) && (u.getSenha().equals(senha))) {
+           System.out.println ("\nSeja bem vindo(a), " + u.getNome() + "!\n");
+           return true;
           }
           else{
             System.out.println("Você deve se cadastrar primeiro!");
+            EntradaSaida.escolherOpcaoMenuLogin();
           }
         }
         return false;

@@ -4,8 +4,8 @@ public class EntradaSaida {
     // Método para mostrar opções menu de login
     public static void escolherOpcaoMenuLogin() {
 
-        System.out.println("------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +
-                "\nEscolha uma das operações a seguir:\n\n" +
+        System.out.println("\n------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +
+                "\n Escolha uma das operações a seguir:\n\n" +
                 "1 - Logar em sua conta \n" +
                 "2 - Cadastrar uma nova conta \n"+
                 "3 - Sair \n");
@@ -14,7 +14,7 @@ public class EntradaSaida {
     // Método para mostrar opções menu principal
     public static void escolherOpcaoMenuADM() {
 
-        System.out.println("------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +
+        System.out.println("\n------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +
                 "\nEscolha uma opção para tratativas acerca de doações:\n\n" +
                 "1 - Cadastrar doação \n" +
                 "2 - Visualizar doações cadastradas \n" +
@@ -51,7 +51,7 @@ public class EntradaSaida {
     // Método para mostrar menu secundário (contendo as categorias)
     public static void escolherOpcaoMenuCategorias() {
 
-        System.out.print("Escolha uma opção: \n" +
+        System.out.print("Escolha uma opção: \n\n" +
                 "1 - Vestuário\n" +
                 "2 - Alimento \n" +
                 "3 - Móveis \n" +
@@ -73,5 +73,6 @@ public class EntradaSaida {
                 "4 - Telefone \n" +
                 "5 - Voltar ao menu principal \n");
     }
+    
 
 }

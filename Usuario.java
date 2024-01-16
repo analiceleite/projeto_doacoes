@@ -1,7 +1,7 @@
 
 public class Usuario {
     int idUsuario;
-    private String senha, login, nomeUsuario;
+    private String senha, confirmacaoSenha, login, nomeUsuario;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -18,6 +18,15 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public String getConfirmacaoSenha() {
+        return confirmacaoSenha;
+    }
+
+    public void setConfirmacaoSenha(String confirmacaoSenha) {
+        this.confirmacaoSenha = confirmacaoSenha;
+    }
+
 
     public String getLogin() {
         return login;

@@ -104,13 +104,6 @@ public class GestaoEstoque {
     this.doacoesCadastradas.remove(id);
     return "Tarefa removida com sucesso!";
   }
-
-  // SOBRE O ARRAY DE DOAÇÕES EM ESTOQUE:
-
-  // Dar entrada na doação em estoque
-
-  // Consultar doações em estoque por ID
-
-  // Consultar doações por categoria
-
 }
+
+

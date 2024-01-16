@@ -19,12 +19,11 @@ public class GestaoUsuarios {
    public boolean buscarLogin(String login, String senha, String nome) {
         for (Usuario u : this.listaDeUsuarios) {
           if ((u.getLogin().equals(login)) && (u.getSenha().equals(senha))) {
-           System.out.println ("\nSeja bem vindo(a), " + u.getNome() + "!\n");
+           System.out.println ("\nSeja bem vindo(a), " + u.getNome().toUpperCase() + "!\n");
            return true;
           }
           else{
-            System.out.println("Você deve se cadastrar primeiro!");
-            EntradaSaida.escolherOpcaoMenuLogin();
+            System.out.println("Usuário não cadastrado, realize seu cadastro primeiro!");
           }
         }
         return false;

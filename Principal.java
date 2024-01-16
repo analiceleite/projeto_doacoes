@@ -44,6 +44,17 @@ public class Principal {
             u.setLogin(scan.next());
             System.out.println("Informa a senha da sua conta: ");
             u.setSenha(scan.next());
+            System.out.println("Confirme a sua senha: ");
+            u.setConfirmacaoSenha(scan.next());
+
+            if (!u.getSenha().equals(u.getConfirmacaoSenha())) {
+              System.out.println("\nAs senhas não coincidem, tente novamente!\n");
+              System.out.println("Informa a senha da sua conta: ");
+              u.setSenha(scan.next());
+              System.out.println("Confirme a sua senha: ");
+              u.setConfirmacaoSenha(scan.next());
+          }
+          
             gu.adicionarUsuario(u);
             jaLogou = false;
             

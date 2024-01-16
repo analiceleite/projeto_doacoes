@@ -31,7 +31,7 @@ public class EntradaSaida {
                 "0 - Sair do programa \n");
     }
 
-    // Método para mostrar opções menu principal
+    // Método para mostrar opções menu do usuário
     public static void escolherOpcaoMenuUsuario() {
 
         System.out.println("------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +

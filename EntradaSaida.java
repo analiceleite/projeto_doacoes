@@ -24,10 +24,7 @@ public class EntradaSaida {
                 "5 - Dar entrada em doações para o estoque \n" +
                 "6 - Consultar doações em estoque por ID \n" +
                 "7 - Consultar doações por categoria \n" +
-                "\nEscolha uma opção para tratativas acerca de voluntariado:\n\n" +
-                "8 - Realizar cadastro para voluntariado \n" +
-                "9 - Visualizar voluntários cadastrados\n" +
-                "10 - Editar informações dos voluntários cadastrados\n" +
+                "8 - Voltar ao menu principal\n" +
                 "0 - Sair do programa \n");
     }
 
@@ -40,6 +37,7 @@ public class EntradaSaida {
                 "2 - Visualizar minhas doações cadastradas \n" +
                 "3 - Alterar descrição de alguma doação \n" +
                 "4 - Excluir cadastro \n" +
+                // Menu para cadastrar novo doador
                 "\nDoadores:\n\n" +
                 "5 - Realizar cadastro para doador \n" +
                 "6 - Visualizar informações do meu cadastro \n" +

@@ -16,17 +16,13 @@ public class GestaoUsuarios {
         listaDeUsuarios.add(Usuario);
     }
 
-   public boolean buscarLogin(String login, String senha, String nome) {
+   public Usuario buscarLogin(String login, String senha, String nome) {
         for (Usuario u : this.listaDeUsuarios) {
           if ((u.getLogin().equals(login)) && (u.getSenha().equals(senha))) {
-           System.out.println ("\nSeja bem vindo(a), " + u.getNome().toUpperCase() + "!\n");
-           return true;
-          }
-          else{
-            System.out.println("Usuário não cadastrado, realize seu cadastro primeiro!");
+           return u;
           }
         }
-        return false;
+        return null;
     } 
     
 
@@ -43,7 +39,7 @@ public class GestaoUsuarios {
         return mensagem;
     }
 
-    // Editar senha usuario
+  // Editar senha usuario
   public String alterarSenhaUsuario(int id) {
     boolean encontrado = false;
 
@@ -62,4 +58,6 @@ public class GestaoUsuarios {
     }
 
   }
+
+
 }

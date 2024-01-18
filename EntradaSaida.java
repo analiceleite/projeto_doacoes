@@ -1,76 +1,65 @@
 
 public class EntradaSaida {
 
-    // Método para mostrar opções menu de login
-    public static void escolherOpcaoMenuLogin() {
-
-        System.out.println("\n------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +
-                "\n Escolha uma das operações a seguir:\n\n" +
-                "1 - Logar em sua conta \n" +
-                "2 - Cadastrar uma nova conta \n"+
-                "3 - Sair \n");
+    public static int selecionaOpcao() {
+        return Integer.parseInt(System.console().readLine("Opção --> "));
     }
 
-    // Método para mostrar opções menu principal
+    // Menus
+    public static void titulo() {
+        System.out.println("------------ BEM VINDO AO MOVIMENTO DOAR ------------\n");
+    }
+
+    public static int menuPrincipal() {
+        System.out.println("\n Escolha uma das operações a seguir:\n\n" +
+                "[1]- Logar\n" +
+                "[2]- Cadastrar\n" +
+                "[3]- Sair \n");
+        return selecionaOpcao();
+    }
+
     public static void escolherOpcaoMenuADM() {
-
-        System.out.println("\n------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +
+        System.out.println("------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +
                 "\nEscolha uma opção para tratativas acerca de doações:\n\n" +
-                "1 - Cadastrar doação \n" +
-                "2 - Visualizar doações cadastradas \n" +
-                "3 - Alterar descrição de alguma doação \n" +
-                "4 - Excluir cadastro \n" +
-                "\nEscolha uma opção para tratativas acerca de inserção de doações no estoque:\n\n" +
-                "5 - Dar entrada em doações para o estoque \n" +
-                "6 - Consultar doações em estoque por ID \n" +
-                "7 - Consultar doações por categoria \n" +
-                "8 - Voltar ao menu principal\n" +
-                "0 - Sair do programa \n");
+                "[1]- Cadastrar doação \n" +
+                "[2]- Visualizar doações cadastradas \n" +
+                "[3]- Alterar descrição de alguma doação \n" +
+                "[4]- Excluir cadastro \n" +
+                "\nEscolha uma opção para tratativas do estoque:\n\n" +
+                "[5]- Dar entrada em doações para o estoque \n" +
+                "[6]- Consultar doações em estoque por ID \n" +
+                "[7]- Consultar doações por categoria \n" +
+                "[8]- Voltar ao menu principal\n" +
+                "\n[0]- Sair do programa \n");
     }
 
-    // Método para mostrar opções menu do usuário
     public static void escolherOpcaoMenuUsuario() {
-
         System.out.println("------------ BEM VINDO AO MOVIMENTO DOAR ------------ \n" +
                 "\nDoações:\n\n" +
-                "1 - Cadastrar doação \n" +
-                "2 - Visualizar minhas doações cadastradas \n" +
-                "3 - Alterar descrição de alguma doação \n" +
-                "4 - Excluir cadastro \n" +
-                // Menu para cadastrar novo doador
-                "\nDoadores:\n\n" +
-                "5 - Realizar cadastro para doador \n" +
-                "6 - Visualizar informações do meu cadastro \n" +
-                "7 - Editar informações do meu cadastro \n" +
-                "8 - Excluir meu cadastro \n" +
-                "0 - Sair do programa \n");
+                "[1]- Cadastrar doação \n" +
+                "[2]- Visualizar minhas doações cadastradas \n" +
+                "[3]- Alterar descrição de alguma doação \n" +
+                "{4}- Excluir cadastro \n");
     }
 
-    // Método para mostrar menu secundário (contendo as categorias)
     public static void escolherOpcaoMenuCategorias() {
 
         System.out.print("Escolha uma opção: \n\n" +
-                "1 - Vestuário\n" +
-                "2 - Alimento \n" +
-                "3 - Móveis \n" +
-                "4 - Dinheiro \n" +
-                "5 - Voltar ao menu principal \n" +
-                "0 - Sair \n");
+                "[1]- Vestuário\n" +
+                "[2]- Alimento \n" +
+                "[3]- Móveis \n" +
+                "[4]- Dinheiro \n" +
+                "[5]- Voltar ao menu principal \n" +
+                "[0]- Sair \n");
     }
 
-    // Solicitar ID
     public static void solicitarId(String msg) {
-        System.out.print("Informe o ID do cadastro que deseja "+ msg +":" );
+        System.out.print("Informe o ID do cadastro que deseja " + msg + ":");
     }
 
-    public static void escolherOpcaoMenuVoluntarios() {
-             System.out.print("Oque você deseja alterar? \n" +
-                "1 - Nome\n" +
-                "2 - Idade \n" +
-                "3 - Endereço \n" +
-                "4 - Telefone \n" +
-                "5 - Voltar ao menu principal \n");
-    }
-    
+    // Preencher infos login
 
+    public static String solicitarDadosLogin(String mensagem) {
+        return System.console().readLine("Insira " + mensagem);
+    }
 }

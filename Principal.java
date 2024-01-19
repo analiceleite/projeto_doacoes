@@ -1,71 +1,45 @@
 import java.util.Scanner;
 
 public class Principal {
-
   public static void main(String[] args) throws Exception {
+    GestaoUsuarios.cadastrarUsuarioAdmin();
     try (Scanner scan = new Scanner(System.in)) {
       GestaoEstoque ge = new GestaoEstoque();
       GestaoUsuarios gu = new GestaoUsuarios();
 
       Usuario u = new Usuario();
       int opcao = 0;
-      int opcaoMenuPrincipal = 0;
+      // int opcaoMenuPrincipal = 0;
       int opcaoCategorias = 0;
       int id = 0;
       // int opcaoMenus = 0;
       // int opcaoMenuPrincipal = 0;
       // int opcaoMenuEstoque = 0;
       boolean existente = false;
+      String senhaUsuario = "";
 
       // Login
       do {
         switch (EntradaSaida.menuPrincipal()) {
           case 1: // Solicitar dados
-            Usuario usuarioLogado = Validacao.validarLogin(gu);
-            if(usuarioLogado != null){
-
-            }else{
-              
-            }
+            Validacao.validarLogin(gu);
             break;
           case 2: // Cadastrar
-
-            break;
+            u.setNome(EntradaSaida.solicitarDadosCadastro("nome")); 
+            u.setLogin(EntradaSaida.solicitarDadosCadastro("login"));
+            u.setSenha(EntradaSaida.solicitarDadosCadastro("senha"));
+            senhaUsuario = EntradaSaida.solicitarDadosCadastro("confirmação de senha");
+            gu.adicionarUsuario(u,senhaUsuario);
+            EntradaSaida.limpatela();
+          break;
 
           case 3: // Sair
-            break;
+            System.exit(0);
+          break;
 
           default:
             break;
         }
-        // [if (opcaoMenuPrincipal == 1) {]
-        //
-
-        // } else if (opcaoMenuPrincipal == 2) {
-        // System.out.println("\n---- Tela de cadastro ----\n");
-        // System.out.println("Informe seu nome: ");
-        // u.setNome(scan.next());
-        // System.out.println("Informe o login da sua conta: ");
-        // u.setLogin(scan.next());
-        // System.out.println("Informa a senha da sua conta: ");
-        // u.setSenha(scan.next());
-        // System.out.println("Confirme a sua senha: ");
-        // u.setConfirmacaoSenha(scan.next());
-
-        // if (!u.getSenha().equals(u.getConfirmacaoSenha())) {
-        // System.out.println("\nAs senhas não coincidem, tente novamente!\n");
-        // System.out.println("Informa a senha da sua conta: ");
-        // u.setSenha(scan.next());
-        // System.out.println("Confirme a sua senha: ");
-        // u.setConfirmacaoSenha(scan.next());
-        // }
-
-        // gu.adicionarUsuario(u);
-        // existente = false;
-
-        // } else if (opcaoMenuPrincipal == 3) {
-        // System.exit(0);
-        // }
       } while (!existente);
 
       // Login Admin
@@ -127,6 +101,7 @@ public class Principal {
                   System.exit(0);
                   break;
               }
+            break;
             case 2: // Visualizar doações cadastradas
               System.out.println(ge.mostrarDoacoesCadastradas());
               break;
@@ -205,6 +180,7 @@ public class Principal {
                   System.exit(0);
                   break;
               }
+            break;
             case 2: // Visualizar minhas doações cadastradas
               System.out.println(ge.mostrarDoacoesCadastradas());
               break;

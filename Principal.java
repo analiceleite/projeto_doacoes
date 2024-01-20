@@ -5,7 +5,7 @@ public class Principal {
   public static void main(String[] args) throws Exception {
     GestaoUsuarios.cadastrarUsuarioAdmin();
     try (Scanner scan = new Scanner(System.in)) {
-      GestaoUsuarios gu = new GestaoUsuarios();
+      GestaoUsuarios gu = new GestaoUsuarios();   
 
       Usuario u = new Usuario();
       boolean existente = false;
@@ -13,6 +13,7 @@ public class Principal {
 
       // Login
       do {
+        Recursos.limpatela();
         switch (EntradaSaida.menuPrincipal()) {
           case 1: // Solicitar dados
             Validacao.validarLogin(gu);

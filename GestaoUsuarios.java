@@ -8,7 +8,7 @@ public class GestaoUsuarios {
   public void adicionarUsuario(Usuario Usuario, String Senha) {
       int id = 1;
       boolean confirmarSenha = true;
-      for (Usuario u : this.listaDeUsuarios) {
+      for (Usuario u : listaDeUsuarios) {
           if (u.idUsuario >= id) {
               id = u.idUsuario + 1;
           }
@@ -38,12 +38,10 @@ public class GestaoUsuarios {
     u.setLogin("admin");
     u.setSenha("admin");
     listaDeUsuarios.add(u);
-  }
+  } 
 
-  
-
-   public Usuario buscarLogin(String login, String senha, String nome) {
-        for (Usuario u : this.listaDeUsuarios) {
+   public Usuario buscarLogin(String login, String senha) {
+        for (Usuario u : listaDeUsuarios) {
           if ((u.getLogin().equals(login)) && (u.getSenha().equals(senha))) {
            return u;
           }
@@ -55,7 +53,7 @@ public class GestaoUsuarios {
     public String mostrarUsuariosCadastrados() {
         String mensagem = "";
         mensagem += "\nAs informações dos usuários cadastrados são: \n ";
-        for (Usuario u : this.listaDeUsuarios) {
+        for (Usuario u : listaDeUsuarios) {
             mensagem += "\n ID do cadastro: " + u.idUsuario + "\n Login: " +
                     u.getLogin() +
                     "\n Senha: " + u.getSenha() + "\n";
@@ -67,7 +65,7 @@ public class GestaoUsuarios {
   public String alterarSenhaUsuario(int id) {
     boolean encontrado = false;
 
-    for (Usuario u : this.listaDeUsuarios) {
+    for (Usuario u : listaDeUsuarios) {
       encontrado = true;
   
       if (u.idUsuario == id) {

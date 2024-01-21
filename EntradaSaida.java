@@ -1,15 +1,17 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 public class EntradaSaida {
-
-    GestaoEstoque ge = new GestaoEstoque();
+    private static Scanner scanner = new Scanner(System.in);
+    static GestaoEstoque ge = new GestaoEstoque();
+    static GestaoUsuarios gu = new GestaoUsuarios();
     static boolean existente = false;
-
+    static int id = 0;
 
     public static void limpatela() throws InterruptedException, IOException {// Limpar tela
         try {
             // Aguarda por 2 segundos
-            Thread.sleep(2000);
+            Thread.sleep(1400);
         } catch (InterruptedException e) {
             // Lida com a exceção se a thread for interrompida enquanto estiver dormindo
             e.printStackTrace();
@@ -28,49 +30,83 @@ public class EntradaSaida {
     public static void titulo() { // Título
         System.out.println("------------ BEM VINDO AO MOVIMENTO DOAR ------------\n");
     }
+    
     public static int menuPrincipal() {
         System.out.println("\nEscolha uma das operações a seguir:\n\n" +
-                "[1]- Logar\n" +
-                "[2]- Cadastrar\n" +
-                "[3]- Sair \n");
+                "[1]- Controle de doações\n" +
+                "[2]- Administração\n" +
+                "[0]- Sair do programa \n");
         return selecionaOpcao();
     }
-    public static int escolherOpcaoMenuADM() {
-        System.out.println("\nEscolha uma opção para tratativas acerca de doações:\n\n" +
-                "[1]- Cadastrar doação \n" +
-                "[2]- Visualizar doações cadastradas \n" +
-                "[3]- Alterar descrição de alguma doação \n" +
-                "[4]- Excluir cadastro \n" +
-                "\nEscolha uma opção para tratativas do estoque:\n\n" +
-                "[5]- Dar entrada em doações para o estoque \n" +
-                "[6]- Consultar doações em estoque por ID \n" +
-                "[7]- Consultar doações por categoria \n" +
-                "[8]- Voltar ao menu principal\n" +
-                "[0]- Sair do programa \n");
-            return selecionaOpcao();
+    
+    public static int escolherOpcaoMenuAdm() throws InterruptedException, IOException {
+        limpatela();
+        System.out.println(
+            "\n[1]- Cadastrar usuário \n" +
+            "[2]- Exibir usuários cadastrados \n" +
+            "[3]- Alterar senha usuário \n" +
+            "[4]- Deletar usuário \n");
+
+    System.out.println("[0]- Sair \n");
+    int so = selecionaOpcao();
+    String senhaUsuario;
+    
+    switch (so) {
+        case 1: // Cadastrar usuário
+            limpatela();
+            Usuario u = new Usuario();
+            u.setNome(solicitarDadosCadastro("nome"));
+            u.setLogin(solicitarDadosCadastro("login"));
+            u.setSenha(solicitarDadosCadastro("senha"));
+            senhaUsuario =
+            solicitarDadosCadastro("confirmação de senha");
+            gu.adicionarUsuario(u, senhaUsuario);
+            escolherOpcaoMenuAdm();
+        break;
+        case 2: // Exibir usuários cadastrados
+            limpatela();
+            GestaoUsuarios.mostrarUsuariosCadastrados();
+            escolherOpcaoMenuAdm();
+        break;
+
+        case 3: // Alterar senha usuário
+            limpatela();
+            id = solicitarId();  
+            gu.alterarSenhaUsuario(id); 
+            escolherOpcaoMenuAdm();    
+            break;
+        case 4: // Excluir cadastro
+            limpatela();
+            id = solicitarId();  
+            GestaoUsuarios.deletarCadastroUsuario(id);
+            escolherOpcaoMenuAdm();
+        break;
     }
+        
+return 0;
+
+    }
+
     public static int escolherOpcaoMenuUsuario(String tipoUsuario) throws InterruptedException, IOException {
         do {
-        Recursos.limpatela();
+        limpatela();
         System.out.println(
                 "\n[1]- Cadastrar doação \n" +
                 "[2]- Visualizar minhas doações cadastradas \n" +
                 "[3]- Alterar descrição de alguma doação \n" +
-                "[4]- Excluir cadastro \n");
-        if (tipoUsuario == "admin") {
-                System.out.println(
+                "[4]- Excluir cadastro \n" +
                 "[5]- Dar entrada em doações para o estoque \n" +
                 "[6]- Consultar doações em estoque por ID \n" +
-                "[7]- Consultar doações por categoria \n" +
-                "[8]- Voltar ao menu principal\n"); 
-        } 
-        System.out.println("[0]- Sair do programa \n");
+                "[7]- Consultar doações por categoria \n");
+        
+        System.out.println("[0]- Voltar \n");
         int so = selecionaOpcao();
         if (tipoUsuario == "user" && so > 4 || so > 8) {
             System.out.println("\nOpção inválida! Tente novamente.");
             Thread.sleep(2000);
-            EntradaSaida.escolherOpcaoMenuUsuario(tipoUsuario);
+            escolherOpcaoMenuUsuario(tipoUsuario);
         }
+        
         switch (so) {
             case 1: // Escolher categria
                 do{
@@ -97,17 +133,24 @@ public class EntradaSaida {
             case 2: // Visualizar doações cadastradas
                 GestaoEstoque.mostrarDoacoesCadastradas();
             break;
-            case 3:
+            case 3: // Alterar descrição doação
+                limpatela();
+                id = solicitarId();  
+                GestaoEstoque.alterarDescricaoDoacao(id);
             break;
-            case 4:
+            case 4: // Deletar doação
+                limpatela();
+                id = solicitarId();
+                GestaoEstoque.deletarDoacao(id);
             break;
-            case 5:
+            case 5: // Dar entrada em doações para o estoque
             break;
-            case 6:
+            case 6: // Consultar doações em estoque por ID
             break;
-            case 7:
+            case 7: // Consultar doações em estoque por categoria
             break;
-            case 8:
+            case 0: // Voltar ao menu principal
+                limpatela();
                 menuPrincipal();
             break;
         }
@@ -115,9 +158,10 @@ public class EntradaSaida {
 
     return selecionaOpcao();
 } 
+
     public static int escolherOpcaoMenuCategorias() throws InterruptedException, IOException { // Verificar
 
-        System.out.print("Escolha uma opção: \n\n" +
+        System.out.print("\nEscolha uma opção: \n\n" +
                 "[1]- Vestuário\n" +
                 "[2]- Alimento \n" +
                 "[3]- Móveis \n" +
@@ -136,7 +180,7 @@ public class EntradaSaida {
          GestaoEstoque.cadastrarDoacao(d);
          System.out.println("\nDoação cadastrada com sucesso!\n");
          Thread.sleep(2000);
-         Recursos.limpatela();
+         limpatela();
         return 0;
     }
 
@@ -148,7 +192,7 @@ public class EntradaSaida {
         GestaoEstoque.cadastrarDoacao(d);
         System.out.println("\nDoação cadastrada com sucesso!\n");
         Thread.sleep(2000);
-        Recursos.limpatela();
+        limpatela();
        return 0;
    }
 
@@ -160,7 +204,7 @@ public class EntradaSaida {
          GestaoEstoque.cadastrarDoacao(d);
          System.out.println("\nDoação cadastrada com sucesso!\n");
          Thread.sleep(2000);
-         Recursos.limpatela();
+         limpatela();
         return 0;
     }
 
@@ -175,17 +219,15 @@ public class EntradaSaida {
         GestaoEstoque.cadastrarDoacao(d);
         System.out.println("\nDoação cadastrada com sucesso!\n");
         Thread.sleep(2000);
-        Recursos.limpatela();
+        limpatela();
     return 0;
     }
     
     // Preencher infos 
-    public static void solicitarId(String msg) {
-        System.out.print("Informe o ID do cadastro que deseja " + msg + ":");
-    }
-
-    public static String solicitarDadosLogin(String mensagem) {
-        return System.console().readLine("Informe " + mensagem);
+    public static int solicitarId() {
+        System.out.print("Informe o ID do cadastro --> ");
+        int id = scanner.nextInt();
+        return id;
     }
 
     public static String solicitarDadosCadastro(String mensagem) {

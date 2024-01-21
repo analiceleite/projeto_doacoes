@@ -5,29 +5,24 @@ public class Principal {
   public static void main(String[] args) throws Exception {
     GestaoUsuarios.cadastrarUsuarioAdmin();
     try (Scanner scan = new Scanner(System.in)) {
-      GestaoUsuarios gu = new GestaoUsuarios();   
-
-      Usuario u = new Usuario();
+      GestaoUsuarios gu = new GestaoUsuarios();  
       boolean existente = false;
-      String senhaUsuario = "";
-
+   
       // Login
       do {
-        Recursos.limpatela();
+        EntradaSaida.limpatela();
         switch (EntradaSaida.menuPrincipal()) {
-          case 1: // Solicitar dados
+          case 1: // Controle de estoque
             Validacao.validarLogin(gu);
             break;
-          case 2: // Cadastrar
-            u.setNome(EntradaSaida.solicitarDadosCadastro("nome"));
-            u.setLogin(EntradaSaida.solicitarDadosCadastro("login"));
-            u.setSenha(EntradaSaida.solicitarDadosCadastro("senha"));
-            senhaUsuario =
-              EntradaSaida.solicitarDadosCadastro("confirmação de senha");
-            gu.adicionarUsuario(u, senhaUsuario);
-            EntradaSaida.limpatela();
+          case 2: // Administração
+            if (Validacao.validarLoginAdm(gu)) {
+              EntradaSaida.escolherOpcaoMenuAdm();
+            } else {
+              System.out.println("Login ou senha inválidos. Tente novamente.\n");
+            }
             break;
-          case 3: // Sair
+          case 0: // Sair
             System.exit(0);
             break;
           default:

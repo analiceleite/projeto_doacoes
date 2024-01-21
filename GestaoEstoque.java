@@ -1,11 +1,12 @@
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class GestaoEstoque {
 
-  Scanner scan = new Scanner(System.in);
-  GestaoEstoque ge = new GestaoEstoque();
+  static Scanner scan = new Scanner(System.in);
 
   public ArrayList<DoacaoEmEstoque> doacoesEstoque = new ArrayList<DoacaoEmEstoque>();
 
@@ -27,13 +28,14 @@ public class GestaoEstoque {
   }
 
   // Visualizar doações cadastradas
-  public static void mostrarDoacoesCadastradas() throws InterruptedException, IOException {
-    Recursos.limpatela();
+  public static void mostrarDoacoesCadastradas()
+    throws InterruptedException, IOException {
+    EntradaSaida.limpatela();
     System.out.println("\nDoações cadastradas: ");
 
     for (Doacao d : doacoesCadastradas) {
-    if (d.categoria != "Dinheiro") {
-      System.out.println(
+      if (d.categoria != "Dinheiro") {
+        System.out.println(
           "\nID: " +
           d.id +
           "\nCategoria: " +
@@ -43,48 +45,46 @@ public class GestaoEstoque {
           "\nQuantidade: " +
           d.quantidade +
           "\n"
-      ); 
-    }
-      
-    if (d.categoria == "Dinheiro") {
-      System.out.println(
+        );
+      }
+
+      if (d.categoria == "Dinheiro") {
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(
+          Locale.forLanguageTag("pt-BR")
+        );
+        String valorFormatado = formatoMoeda.format(d.quantidade);
+        System.out.println(
           "\nID: " +
           d.id +
           "\nCategoria: " +
           d.categoria +
           "\nDescrição: " +
           d.descricao +
-          "\nValor " +
-          d.quantidade +
-          "\n");
+          "\nValor: " +
+          valorFormatado +
+          "\n"
+        );
+      }
     }
-    
-    }
-    System.out.println("Pressione ENTER para voltar... \n"); 
+    System.out.println("Pressione ENTER para voltar... \n");
     try {
       System.in.read(new byte[2]);
     } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
-
-  // Editar descrição doação
-  public String alterarDescricaoDoacao(int id) {
-    boolean encontrado = false;
-
-    for (Doacao d : doacoesCadastradas) {
-      encontrado = true;
-      if (d.id == id) {
-        System.out.println("Digite a nova descrição da sua doação: ");
-        d.descricao = scan.next();
-      }
-    }
-    if (encontrado == true) {
-      return ("Descrição alterada com sucesso! ");
-    } else {
-      return ("Cadastro da doação não encontrado! ");
+      e.printStackTrace();
     }
   }
+
+  // Editar descrição doação
+  public static String alterarDescricaoDoacao(int id) {
+    for (Doacao d : doacoesCadastradas) {
+        if (d.id == id) {
+            System.out.println("\nDigite a nova descrição da sua doação: ");
+            d.descricao = scan.next();
+            return "\nDescrição alterada com sucesso!";
+        }
+    }
+    return "ID não encontrado!";
+}
 
   // Editar id doação
   public String alterarIdDoacao(int id) {
@@ -123,8 +123,15 @@ public class GestaoEstoque {
   }
 
   // Excluir doação
-  public String deletarDoacao(int id) {
-    doacoesCadastradas.remove(id);
-    return "Tarefa removida com sucesso!";
-  }
+  public static String deletarDoacao(int id) {
+    for (int i = 0; i < doacoesCadastradas.size(); i++) {
+        Doacao d = doacoesCadastradas.get(i);
+        if (d.id == id) {
+            doacoesCadastradas.remove(i);
+            return "Doação removida com sucesso!";
+        }
+    }
+    return "ID não encontrado. Nenhuma doação removida.";
+}
+
 }

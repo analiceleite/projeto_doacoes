@@ -11,7 +11,7 @@ public class EntradaSaida {
     public static void limpatela() throws InterruptedException, IOException {// Limpar tela
         try {
             // Aguarda por 2 segundos
-            Thread.sleep(1400);
+            Thread.sleep(1200);
         } catch (InterruptedException e) {
             // Lida com a exceção se a thread for interrompida enquanto estiver dormindo
             e.printStackTrace();
@@ -29,11 +29,23 @@ public class EntradaSaida {
 
     // Menus
 
+    public static void tituloPersonalizado() {
+    System.out.println(Cor.YELLOW + " _______                        ___         __  _______               __\r\n" + //
+          "|   |   |.-----..-----..-----..'  _|.--.--.|  ||   |   |.---.-..----.|  |--..-----..----.\r\n" + //
+          "|       ||  _  ||  _  ||  -__||   _||  |  ||  ||       ||  _  ||   _||  _  ||  _  ||   _|\r\n" + //
+          "|___|___||_____||   __||_____||__|  |_____||__||___|___||___._||__|  |_____||_____||__|\r\n" + //
+          "                |__|\r\n" + //
+          "");;
+}
+
     public static void titulo() { // Título
-        System.out.println("------------ BEM VINDO AO MOVIMENTO DOAR ------------\n");
+        tituloPersonalizado();
+        System.out.println(Cor.YELLOW + "------------ BEM VINDO AO MOVIMENTO DOAR ------------\n");
     }
     
     public static int menuPrincipal() {
+        tituloPersonalizado();
+        System.out.println(Cor.YELLOW + "------------ BEM VINDO AO SISTEMA HOPEFULHARBOR ------------");
         System.out.println("\nEscolha uma das operações a seguir:\n\n" +
                 "[1]- Controle de doações\n" +
                 "[2]- Administração\n" +
@@ -43,6 +55,8 @@ public class EntradaSaida {
     
     public static int escolherOpcaoMenuAdm() throws InterruptedException, IOException {
         limpatela();
+        tituloPersonalizado();
+        System.out.println(Cor.YELLOW + "------------ BEM VINDO, ADMINISTRADOR ------------\n");
         System.out.println(
             "\n[1]- Cadastrar usuário \n" +
             "[2]- Exibir usuários cadastrados \n" +
@@ -92,7 +106,9 @@ public class EntradaSaida {
     public static int escolherOpcaoMenuUsuario(String tipoUsuario) throws InterruptedException, IOException {
         do {
         limpatela();
-        System.out.println(
+        tituloPersonalizado();
+        System.out.println("Bem vindo(a), " + tipoUsuario);
+        System.out.println( Cor.YELLOW +
                 "\n[1]- Cadastrar doação \n" +
                 "[2]- Visualizar doações cadastradas \n" +
                 "[3]- Alterar descrição \n" +
@@ -105,7 +121,7 @@ public class EntradaSaida {
         System.out.println("[0]- Voltar \n");
         int so = selecionaOpcao();
         if (tipoUsuario == "user" && so > 8) {
-            System.out.println("\nOpção inválida! Tente novamente.");
+            System.out.println(Cor.RED + "\nOpção inválida! Tente novamente.");
             Thread.sleep(2000);
             escolherOpcaoMenuUsuario(tipoUsuario);
         }
@@ -148,10 +164,10 @@ public class EntradaSaida {
             break;
             case 5: // Dar entrada em doações para o estoque
                 limpatela();
-                GestaoEstoque.mostrarDoacoesCadastradas();
+                GestaoEstoque.mostrarDoacoesCadastradasEstoque();
                 id = solicitarId();
                 int qtdAtual = 0;
-                System.out.println("Quantidade do produto que deseja dar baixa: ");
+                System.out.println("\nQuantidade do produto que deseja dar entrada: ");
                 qtdAtual = scanner.nextInt();
                 GestaoEstoque.addQtdAtualProduto(id, qtdAtual);
             break;
@@ -160,7 +176,7 @@ public class EntradaSaida {
                 GestaoEstoque.mostrarDoacoesCadastradas();
                 id = solicitarId();
                 int qtdSaida = 0;
-                System.out.println("Quantidade do produto que deseja dar baixa: ");
+                System.out.println("\nQuantidade do produto que deseja dar baixa: ");
                 qtdSaida = scanner.nextInt();
                 GestaoEstoque.removeQtdAtualProduto(id, qtdSaida);
             break;
@@ -172,7 +188,7 @@ public class EntradaSaida {
             case 8: // Consultar doações em estoque por categoria
                 limpatela();
                 int opCategoria = 0;
-                System.out.print("Insira a categoria que deseja exibir: ");
+                System.out.print("Insira a categoria que deseja exibir:\n ");
                 opCategoria = escolherOpcaoMenuCategorias();
                 GestaoEstoque.mostrarDoacoesCadastradasPorCategoria(opCategoria);
             break;
@@ -188,7 +204,7 @@ public class EntradaSaida {
 
     public static int escolherOpcaoMenuCategorias() throws InterruptedException, IOException { // Verificar
 
-        System.out.print("\nEscolha uma opção: \n\n" +
+        System.out.print(Cor.YELLOW + "\nEscolha uma opção: \n\n" +
                 "[1]- Vestuário\n" +
                 "[2]- Alimento \n" +
                 "[3]- Móveis \n" +

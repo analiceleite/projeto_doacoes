@@ -30,44 +30,88 @@ public class GestaoEstoque {
 
   // Visualizar doações cadastradas
   public static void mostrarDoacoesCadastradas()
-    throws InterruptedException, IOException {
+      throws InterruptedException, IOException {
+    EntradaSaida.limpatela();
+    System.out.println("\n-------------------------- \n"
+        + "\n   Doações cadastradas:\n " +
+        "\n-------------------------- \n");
+
+    for (Doacao d : doacoesCadastradas) {
+      if (d.categoria != "Dinheiro") {
+        System.out.println(
+            "\nID: " +
+                d.id +
+                "\nCategoria: " +
+                d.categoria +
+                "\nDescrição: " +
+                d.descricao +
+                "\nQuantidade: " +
+                d.quantidade +
+                "\n");
+      }
+
+      if (d.categoria == "Dinheiro") {
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(
+            Locale.forLanguageTag("pt-BR"));
+        String valorFormatado = formatoMoeda.format(d.quantidade);
+        System.out.println(
+            "\nID: " +
+                d.id +
+                "\nCategoria: " +
+                d.categoria +
+                "\nDescrição: " +
+                d.descricao +
+                "\nValor: " +
+                valorFormatado +
+                "\n");
+      }
+    }
+
+    System.out.println("Pressione ENTER para voltar... \n");
+    try {
+      System.in.read(new byte[2]);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static void mostrarDoacoesCadastradasEstoque()
+      throws InterruptedException, IOException {
     EntradaSaida.limpatela();
     System.out.println("\nDoações cadastradas: ");
 
     for (Doacao d : doacoesCadastradas) {
       if (d.categoria != "Dinheiro") {
         System.out.println(
-          "\nID: " +
-          d.id +
-          "\nCategoria: " +
-          d.categoria +
-          "\nDescrição: " +
-          d.descricao +
-          "\nQuantidade: " +
-          d.quantidade +
-          "\n"
-        );
+            "\nID: " +
+                d.id +
+                "\nCategoria: " +
+                d.categoria +
+                "\nDescrição: " +
+                d.descricao +
+                "\nQuantidade: " +
+                d.quantidade +
+                "\n");
       }
 
       if (d.categoria == "Dinheiro") {
         NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(
-          Locale.forLanguageTag("pt-BR")
-        );
+            Locale.forLanguageTag("pt-BR"));
         String valorFormatado = formatoMoeda.format(d.quantidade);
         System.out.println(
-          "\nID: " +
-          d.id +
-          "\nCategoria: " +
-          d.categoria +
-          "\nDescrição: " +
-          d.descricao +
-          "\nValor: " +
-          valorFormatado +
-          "\n"
-        );
+            "\nID: " +
+                d.id +
+                "\nCategoria: " +
+                d.categoria +
+                "\nDescrição: " +
+                d.descricao +
+                "\nValor: " +
+                valorFormatado +
+                "\n");
       }
     }
-    System.out.println("Pressione ENTER para voltar... \n");
+
+    System.out.println("Pressione ENTER para prosseguir... \n");
     try {
       System.in.read(new byte[2]);
     } catch (IOException e) {
@@ -125,14 +169,23 @@ public class GestaoEstoque {
 
   // Excluir doação
   public static String deletarDoacao(int id) {
+    boolean deletado = false;
+
     for (int i = 0; i < doacoesCadastradas.size(); i++) {
       Doacao d = doacoesCadastradas.get(i);
       if (d.id == id) {
         doacoesCadastradas.remove(i);
-        return "Doação removida com sucesso!";
+        deletado = true;
       }
     }
-    return "ID não encontrado. Nenhuma doação removida.";
+
+    if (deletado) {
+      System.out.println("\nCadastro removido com sucesso!");
+    } else {
+      System.out.println(Cor.RED + "Não foi possível remover o cadastro.");
+    }
+
+    return "";
   }
 
   // Dar baixa na doação em estoque
@@ -150,9 +203,8 @@ public class GestaoEstoque {
             result = true;
           } else {
             JOptionPane.showMessageDialog(
-              null,
-              "Erro na alteração da quantidade atual do produto. "
-            );
+                null,
+                "Erro na alteração da quantidade atual do produto. ");
           }
         } catch (Exception e) {
           result = false;
@@ -185,7 +237,7 @@ public class GestaoEstoque {
   // Consultar doações em estoque por ID
 
   public static String mostrarDoacoesCadastradasPorId(int id)
-    throws InterruptedException, IOException {
+      throws InterruptedException, IOException {
     String mensagem = "";
     EntradaSaida.limpatela();
     System.out.println("\nA doação selecionada é: ");
@@ -193,34 +245,31 @@ public class GestaoEstoque {
     for (Doacao d : doacoesCadastradas) {
       if (d.categoria != "Dinheiro" && d.id == id) {
         System.out.println(
-          "\nID: " +
-          d.id +
-          "\nCategoria: " +
-          d.categoria +
-          "\nDescrição: " +
-          d.descricao +
-          "\nQuantidade: " +
-          d.quantidade +
-          "\n"
-        );
+            "\nID: " +
+                d.id +
+                "\nCategoria: " +
+                d.categoria +
+                "\nDescrição: " +
+                d.descricao +
+                "\nQuantidade: " +
+                d.quantidade +
+                "\n");
       }
 
       if (d.categoria == "Dinheiro") {
         NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(
-          Locale.forLanguageTag("pt-BR")
-        );
+            Locale.forLanguageTag("pt-BR"));
         String valorFormatado = formatoMoeda.format(d.quantidade);
         System.out.println(
-          "\nID: " +
-          d.id +
-          "\nCategoria: " +
-          d.categoria +
-          "\nDescrição: " +
-          d.descricao +
-          "\nValor: " +
-          valorFormatado +
-          "\n"
-        );
+            "\nID: " +
+                d.id +
+                "\nCategoria: " +
+                d.categoria +
+                "\nDescrição: " +
+                d.descricao +
+                "\nValor: " +
+                valorFormatado +
+                "\n");
       }
       System.out.println("Pressione ENTER para voltar... \n");
       try {
@@ -234,61 +283,58 @@ public class GestaoEstoque {
 
   // Consultar doações em estoque por categoria
   public static Void mostrarDoacoesCadastradasPorCategoria(int opCategoriaInt)
-    throws InterruptedException, IOException {
+      throws InterruptedException, IOException {
     String opCategoriaStr = "";
 
     EntradaSaida.limpatela();
     System.out.println("\nDoações da categoria correspondente: ");
-    
-    if ( opCategoriaInt == 1) {
+
+    if (opCategoriaInt == 1) {
       opCategoriaStr = "Vestuário";
-    } else if ( opCategoriaInt == 2) {
+    } else if (opCategoriaInt == 2) {
       opCategoriaStr = "Alimento";
-    } else if ( opCategoriaInt == 3) {
+    } else if (opCategoriaInt == 3) {
       opCategoriaStr = "Móveis";
-    } else if ( opCategoriaInt == 4) {
+    } else if (opCategoriaInt == 4) {
       opCategoriaStr = "Dinheiro";
     }
 
     for (Doacao d : doacoesCadastradas) {
       if (d.categoria != "Dinheiro" && d.categoria == opCategoriaStr) {
         System.out.println(
-          "\nID: " +
-          d.id +
-          "\nCategoria: " +
-          d.categoria +
-          "\nDescrição: " +
-          d.descricao +
-          "\nQuantidade: " +
-          d.quantidade +
-          "\n"
-        );
+            "\nID: " +
+                d.id +
+                "\nCategoria: " +
+                d.categoria +
+                "\nDescrição: " +
+                d.descricao +
+                "\nQuantidade: " +
+                d.quantidade +
+                "\n");
       }
 
       if (d.categoria == "Dinheiro" && d.categoria == opCategoriaStr) {
         NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(
-          Locale.forLanguageTag("pt-BR")
-        );
+            Locale.forLanguageTag("pt-BR"));
         String valorFormatado = formatoMoeda.format(d.quantidade);
         System.out.println(
-          "\nID: " +
-          d.id +
-          "\nCategoria: " +
-          d.categoria +
-          "\nDescrição: " +
-          d.descricao +
-          "\nValor: " +
-          valorFormatado +
-          "\n"
-        );
+            "\nID: " +
+                d.id +
+                "\nCategoria: " +
+                d.categoria +
+                "\nDescrição: " +
+                d.descricao +
+                "\nValor: " +
+                valorFormatado +
+                "\n");
       }
     }
     System.out.println("Pressione ENTER para voltar... \n");
-      try {
-        System.in.read(new byte[2]);
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+    try {
+      System.in.read(new byte[2]);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     return null;
   }
 }

@@ -44,3 +44,9 @@
 -> Perguntar se deseja que o dado do valor em dinheiro doado seja público
   : * Se a sim, o nome do doador aparece (data - #### doou valor)
  
+--- Pendências
+
+> Fazer validação de que a senha do usuário deve conter caractere especial a título de segurança;
+> Quando o usuário logar, aparecer bem vindo e o nome do usuário;
+> Alterar cor das linhas de comando - > ok!
+> Verificar mensagem de confirmação ao deletar um usuário no login adm;

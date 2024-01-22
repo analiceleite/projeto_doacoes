@@ -17,7 +17,7 @@ public class Validacao {
         } else if (usuarioLogado != null) {
             inputusuario = EntradaSaida.escolherOpcaoMenuUsuario("user");
         } else {
-            System.out.println("\nUsuário inválido!");
+            System.out.println(Cor.RED + "\nUsuário inválido!");
             Thread.sleep(2000);
         }
         return inputusuario;
@@ -34,7 +34,7 @@ public class Validacao {
         if (usuarioLogado != null && usuarioLogado.getLogin() == "admin" ) {
             admValido = true;
         } else {
-            System.out.println("\nUsuário inválido!");
+            System.out.println(Cor.RED +"\nUsuário inválido!");
             Thread.sleep(2000);
         }
         return admValido;

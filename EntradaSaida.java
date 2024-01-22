@@ -20,6 +20,8 @@ public class EntradaSaida {
         // Limpa a tela
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
+   
+   
     public static int selecionaOpcao() {// Selecionar opção int
         return Integer.parseInt(System.console().readLine("Opção --> "));
 
@@ -83,7 +85,7 @@ public class EntradaSaida {
         break;
     }
         
-return 0;
+    return 0;
 
     }
 
@@ -124,12 +126,12 @@ return 0;
                         case 4:
                             cadastrarDoacaoDinheiro();
                         break;
-                        case 5:
+                        case 0:
                             limpatela();
                             escolherOpcaoMenuUsuario(tipoUsuario);
                         break;
                     }
-                } while (!existente);
+                } while (so != 0);
             break;
             case 2: // Visualizar doações cadastradas
                 GestaoEstoque.mostrarDoacoesCadastradas();
@@ -163,9 +165,16 @@ return 0;
                 GestaoEstoque.removeQtdAtualProduto(id, qtdSaida);
             break;
             case 7: // Consultar doações em estoque por ID
-                
+                limpatela();
+                id = solicitarId();
+                GestaoEstoque.mostrarDoacoesCadastradasPorId(id);
             break;
             case 8: // Consultar doações em estoque por categoria
+                limpatela();
+                int opCategoria = 0;
+                System.out.print("Insira a categoria que deseja exibir: ");
+                opCategoria = escolherOpcaoMenuCategorias();
+                GestaoEstoque.mostrarDoacoesCadastradasPorCategoria(opCategoria);
             break;
             case 0: // Voltar ao menu principal
                 limpatela();
@@ -183,12 +192,14 @@ return 0;
                 "[1]- Vestuário\n" +
                 "[2]- Alimento \n" +
                 "[3]- Móveis \n" +
-                "[4]- Dinheiro \n" +
-                "[5]- Voltar ao menu principal \n\n" +
-                "[0]- Sair \n\n");
+                "[4]- Dinheiro \n\n" +
+                "[0]- Voltar \n\n");
+    
+               
 
         return selecionaOpcao();
     }
+    
 
     public static int cadastrarDoacaoVestuario() throws InterruptedException, IOException {
          Doacao d = new Doacao();

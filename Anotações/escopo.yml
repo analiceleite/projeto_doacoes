@@ -19,9 +19,8 @@
       "2 - Visualizar doações cadastradas \n" +
       "3 - Alterar descrição de alguma doação \n" +
       "4 - Excluir cadastro \n" +
-
-      "\nEscolha uma opção para tratativas acerca de inserção de doações no estoque:\n\n" +
       "5 - Dar entrada em doações para o estoque \n" +
+      "6 - Dar baixa em doações para o estoque \n" +
       "6 - Consultar doações em estoque por ID \n" +
       "7 - Consultar doações por categoria \n" +
       "8 - Voltar ao menu principal"

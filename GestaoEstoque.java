@@ -3,7 +3,6 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
-
 import javax.swing.JOptionPane;
 
 public class GestaoEstoque {
@@ -79,14 +78,14 @@ public class GestaoEstoque {
   // Editar descrição doação
   public static String alterarDescricaoDoacao(int id) {
     for (Doacao d : doacoesCadastradas) {
-        if (d.id == id) {
-            System.out.println("\nDigite a nova descrição da sua doação: ");
-            d.descricao = scan.next();
-            return "\nDescrição alterada com sucesso!";
-        }
+      if (d.id == id) {
+        System.out.println("\nDigite a nova descrição da sua doação: ");
+        d.descricao = scan.next();
+        return "\nDescrição alterada com sucesso!";
+      }
     }
     return "ID não encontrado!";
-}
+  }
 
   // Editar id doação
   public String alterarIdDoacao(int id) {
@@ -127,16 +126,16 @@ public class GestaoEstoque {
   // Excluir doação
   public static String deletarDoacao(int id) {
     for (int i = 0; i < doacoesCadastradas.size(); i++) {
-        Doacao d = doacoesCadastradas.get(i);
-        if (d.id == id) {
-            doacoesCadastradas.remove(i);
-            return "Doação removida com sucesso!";
-        }
+      Doacao d = doacoesCadastradas.get(i);
+      if (d.id == id) {
+        doacoesCadastradas.remove(i);
+        return "Doação removida com sucesso!";
+      }
     }
     return "ID não encontrado. Nenhuma doação removida.";
-}
+  }
 
-// Dar baixa na doação em estoque
+  // Dar baixa na doação em estoque
 
   public static boolean removeQtdAtualProduto(int id, int qtdSaida) {
     boolean result = false;
@@ -152,7 +151,7 @@ public class GestaoEstoque {
           } else {
             JOptionPane.showMessageDialog(
               null,
-              "Erro na alteração da quantidade atual do produto. Valor final menor do que o minimo permitido! "
+              "Erro na alteração da quantidade atual do produto. "
             );
           }
         } catch (Exception e) {
@@ -163,24 +162,133 @@ public class GestaoEstoque {
     return result;
   }
 
-// Dar entrada na doação em estoque
+  // Dar entrada na doação em estoque
 
-public static boolean addQtdAtualProduto(int id, int qtdAtual) {
-  boolean result = false;
+  public static boolean addQtdAtualProduto(int id, int qtdAtual) {
+    boolean result = false;
 
-  for (Doacao d : doacoesCadastradas) {
-    if (d.id == id) {
-      try {
-        int qtd = d.quantidade;
-        int novaQtd = qtd + qtdAtual;
-        d.quantidade = (novaQtd);
-        result = true;
-      } catch (Exception e) {
-        result = false;
+    for (Doacao d : doacoesCadastradas) {
+      if (d.id == id) {
+        try {
+          int qtd = d.quantidade;
+          int novaQtd = qtd + qtdAtual;
+          d.quantidade = (novaQtd);
+          result = true;
+        } catch (Exception e) {
+          result = false;
+        }
       }
     }
+    return result;
   }
-  return result;
-}
 
+  // Consultar doações em estoque por ID
+
+  public static String mostrarDoacoesCadastradasPorId(int id)
+    throws InterruptedException, IOException {
+    String mensagem = "";
+    EntradaSaida.limpatela();
+    System.out.println("\nA doação selecionada é: ");
+
+    for (Doacao d : doacoesCadastradas) {
+      if (d.categoria != "Dinheiro" && d.id == id) {
+        System.out.println(
+          "\nID: " +
+          d.id +
+          "\nCategoria: " +
+          d.categoria +
+          "\nDescrição: " +
+          d.descricao +
+          "\nQuantidade: " +
+          d.quantidade +
+          "\n"
+        );
+      }
+
+      if (d.categoria == "Dinheiro") {
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(
+          Locale.forLanguageTag("pt-BR")
+        );
+        String valorFormatado = formatoMoeda.format(d.quantidade);
+        System.out.println(
+          "\nID: " +
+          d.id +
+          "\nCategoria: " +
+          d.categoria +
+          "\nDescrição: " +
+          d.descricao +
+          "\nValor: " +
+          valorFormatado +
+          "\n"
+        );
+      }
+      System.out.println("Pressione ENTER para voltar... \n");
+      try {
+        System.in.read(new byte[2]);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    return mensagem;
+  }
+
+  // Consultar doações em estoque por categoria
+  public static Void mostrarDoacoesCadastradasPorCategoria(int opCategoriaInt)
+    throws InterruptedException, IOException {
+    String opCategoriaStr = "";
+
+    EntradaSaida.limpatela();
+    System.out.println("\nDoações da categoria correspondente: ");
+    
+    if ( opCategoriaInt == 1) {
+      opCategoriaStr = "Vestuário";
+    } else if ( opCategoriaInt == 2) {
+      opCategoriaStr = "Alimento";
+    } else if ( opCategoriaInt == 3) {
+      opCategoriaStr = "Móveis";
+    } else if ( opCategoriaInt == 4) {
+      opCategoriaStr = "Dinheiro";
+    }
+
+    for (Doacao d : doacoesCadastradas) {
+      if (d.categoria != "Dinheiro" && d.categoria == opCategoriaStr) {
+        System.out.println(
+          "\nID: " +
+          d.id +
+          "\nCategoria: " +
+          d.categoria +
+          "\nDescrição: " +
+          d.descricao +
+          "\nQuantidade: " +
+          d.quantidade +
+          "\n"
+        );
+      }
+
+      if (d.categoria == "Dinheiro" && d.categoria == opCategoriaStr) {
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(
+          Locale.forLanguageTag("pt-BR")
+        );
+        String valorFormatado = formatoMoeda.format(d.quantidade);
+        System.out.println(
+          "\nID: " +
+          d.id +
+          "\nCategoria: " +
+          d.categoria +
+          "\nDescrição: " +
+          d.descricao +
+          "\nValor: " +
+          valorFormatado +
+          "\n"
+        );
+      }
+    }
+    System.out.println("Pressione ENTER para voltar... \n");
+      try {
+        System.in.read(new byte[2]);
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    return null;
+  }
 }

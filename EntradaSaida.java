@@ -92,16 +92,17 @@ return 0;
         limpatela();
         System.out.println(
                 "\n[1]- Cadastrar doação \n" +
-                "[2]- Visualizar minhas doações cadastradas \n" +
-                "[3]- Alterar descrição de alguma doação \n" +
+                "[2]- Visualizar doações cadastradas \n" +
+                "[3]- Alterar descrição \n" +
                 "[4]- Excluir cadastro \n" +
-                "[5]- Dar entrada em doações para o estoque \n" +
-                "[6]- Consultar doações em estoque por ID \n" +
-                "[7]- Consultar doações por categoria \n");
+                "[5]- Dar entrada no estoque \n" +
+                "[6]- Dar baixa no estoque \n" +
+                "[7]- Consultar doações em estoque por ID \n" +
+                "[8]- Consultar doações por categoria \n");
         
         System.out.println("[0]- Voltar \n");
         int so = selecionaOpcao();
-        if (tipoUsuario == "user" && so > 4 || so > 8) {
+        if (tipoUsuario == "user" && so > 8) {
             System.out.println("\nOpção inválida! Tente novamente.");
             Thread.sleep(2000);
             escolherOpcaoMenuUsuario(tipoUsuario);
@@ -144,10 +145,27 @@ return 0;
                 GestaoEstoque.deletarDoacao(id);
             break;
             case 5: // Dar entrada em doações para o estoque
+                limpatela();
+                GestaoEstoque.mostrarDoacoesCadastradas();
+                id = solicitarId();
+                int qtdAtual = 0;
+                System.out.println("Quantidade do produto que deseja dar baixa: ");
+                qtdAtual = scanner.nextInt();
+                GestaoEstoque.addQtdAtualProduto(id, qtdAtual);
             break;
-            case 6: // Consultar doações em estoque por ID
+            case 6: // Dar baixa em doações para o estoque
+                limpatela();
+                GestaoEstoque.mostrarDoacoesCadastradas();
+                id = solicitarId();
+                int qtdSaida = 0;
+                System.out.println("Quantidade do produto que deseja dar baixa: ");
+                qtdSaida = scanner.nextInt();
+                GestaoEstoque.removeQtdAtualProduto(id, qtdSaida);
             break;
-            case 7: // Consultar doações em estoque por categoria
+            case 7: // Consultar doações em estoque por ID
+                
+            break;
+            case 8: // Consultar doações em estoque por categoria
             break;
             case 0: // Voltar ao menu principal
                 limpatela();

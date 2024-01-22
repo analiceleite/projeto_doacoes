@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class GestaoEstoque {
 
   static Scanner scan = new Scanner(System.in);
@@ -132,6 +134,53 @@ public class GestaoEstoque {
         }
     }
     return "ID não encontrado. Nenhuma doação removida.";
+}
+
+// Dar baixa na doação em estoque
+
+  public static boolean removeQtdAtualProduto(int id, int qtdSaida) {
+    boolean result = false;
+
+    for (Doacao d : doacoesCadastradas) {
+      if (d.id == id) {
+        try {
+          int qtd = d.quantidade;
+          int novaQtd = qtd - qtdSaida;
+          if (novaQtd >= 0) {
+            d.quantidade = (novaQtd);
+            result = true;
+          } else {
+            JOptionPane.showMessageDialog(
+              null,
+              "Erro na alteração da quantidade atual do produto. Valor final menor do que o minimo permitido! "
+            );
+          }
+        } catch (Exception e) {
+          result = false;
+        }
+      }
+    }
+    return result;
+  }
+
+// Dar entrada na doação em estoque
+
+public static boolean addQtdAtualProduto(int id, int qtdAtual) {
+  boolean result = false;
+
+  for (Doacao d : doacoesCadastradas) {
+    if (d.id == id) {
+      try {
+        int qtd = d.quantidade;
+        int novaQtd = qtd + qtdAtual;
+        d.quantidade = (novaQtd);
+        result = true;
+      } catch (Exception e) {
+        result = false;
+      }
+    }
+  }
+  return result;
 }
 
 }

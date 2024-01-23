@@ -47,7 +47,8 @@ public class GestaoEstoque {
                 d.descricao +
                 "\nQuantidade: " +
                 d.quantidade +
-                "\n");
+                "\n" +
+                "--------------------------");
       }
 
       if (d.categoria == "Dinheiro") {

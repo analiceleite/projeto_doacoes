@@ -6,16 +6,16 @@ public class Validacao {
     // Validar login
     public static int validarLogin(GestaoUsuarios gu) throws InterruptedException, IOException {
         EntradaSaida.limpatela();
-        String login = EntradaSaida.solicitarDadosCadastro("seu login: ");
-        String senha = EntradaSaida.solicitarDadosCadastro("sua senha: ");
+        String login = EntradaSaida.solicitarDadosCadastro("seu login ");
+        String senha = EntradaSaida.solicitarDadosCadastro("sua senha ");
         Usuario usuarioLogado = gu.buscarLogin(login, senha);
         
         int inputusuario = 0;
 
-        if (usuarioLogado != null && usuarioLogado.getLogin() == "user" ) {
-            inputusuario = EntradaSaida.escolherOpcaoMenuUsuario("user"); 
-        } else if (usuarioLogado != null) {
-            inputusuario = EntradaSaida.escolherOpcaoMenuUsuario("user");
+        if (usuarioLogado != null) {
+            do {
+                inputusuario = EntradaSaida.escolherOpcaoMenuUsuario(usuarioLogado.getNome());
+            } while ( inputusuario == 0 );
         } else {
             System.out.println(Cor.RED + "\nUsuário inválido!");
             Thread.sleep(2000);
@@ -23,19 +23,15 @@ public class Validacao {
         return inputusuario;
     }
 
-    public static boolean validarLoginAdm(GestaoUsuarios gu) throws InterruptedException, IOException {
+    public static boolean validarLoginAdm(Usuario u) throws InterruptedException, IOException {
         boolean admValido = false;
 
-        EntradaSaida.limpatela();
-        String login = EntradaSaida.solicitarDadosCadastro("seu login: ");
-        String senha = EntradaSaida.solicitarDadosCadastro("sua senha: ");
-        Usuario usuarioLogado = gu.buscarLogin(login, senha);
-
-        if (usuarioLogado != null && usuarioLogado.getLogin() == "admin" ) {
+        if (u == null) {
+            admValido = false;
+        } else if (u.getLogin() == "admin" ) {
             admValido = true;
         } else {
-            System.out.println(Cor.RED +"\nUsuário inválido!");
-            Thread.sleep(2000);
+            admValido = false;
         }
         return admValido;
     }

@@ -16,10 +16,21 @@ public class Principal {
             Validacao.validarLogin(gu);
             break;
           case 2: // Administração
-            if (Validacao.validarLoginAdm(gu)) {
-              EntradaSaida.escolherOpcaoMenuAdm();
+            EntradaSaida.limpatela();
+            String login = EntradaSaida.solicitarDadosCadastro("seu login");
+            String senha = EntradaSaida.solicitarDadosCadastro("sua senha");
+            
+            if ( login.compareTo("admin") != 0 ) {
+              System.out.println(Cor.RED + "Usuário sem pemissões!\n");
+              Thread.sleep(2000);
             } else {
-              System.out.println("Login ou senha inválidos. Tente novamente.\n");
+              Usuario usuarioLogado = gu.buscarLogin(login, senha);
+              if (Validacao.validarLoginAdm(usuarioLogado)) {
+                EntradaSaida.escolherOpcaoMenuAdm(usuarioLogado.getNome());
+              } else {
+                System.out.println(Cor.RED + "Login ou senha inválidos. Tente novamente.\n");
+                Thread.sleep(2000);
+              }
             }
             break;
           case 0: // Sair

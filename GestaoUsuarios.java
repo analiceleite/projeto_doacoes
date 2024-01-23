@@ -54,9 +54,9 @@ public class GestaoUsuarios {
     System.out.println(
       "----------------------------------------------------\n" +
     "\n   As informações dos usuários cadastrados são: \n " +
-    "\n----------------------------------------------------" );
+    "\n----------------------------------------------------\n" );
     for (Usuario u : listaDeUsuarios) {
-      System.out.println("\n ID do cadastro: " +
+      System.out.println(" ID do cadastro: " +
           u.idUsuario +
           "\n Login: " +
           u.getLogin() +
@@ -64,12 +64,7 @@ public class GestaoUsuarios {
           u.getSenha() +
           "\n");
     }
-    System.out.println("Pressione ENTER para voltar... \n");
-    try {
-      System.in.read(new byte[2]);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    Recursos.pressEnter();
   }
 
   // Editar senha usuario

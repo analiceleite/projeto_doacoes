@@ -37,33 +37,32 @@ public class EntradaSaida {
           "                |__|\r\n" + //
           "");;
 }
-
-    public static void titulo() { // Título
-        tituloPersonalizado();
-        System.out.println(Cor.YELLOW + "------------ BEM VINDO AO MOVIMENTO DOAR ------------\n");
-    }
     
     public static int menuPrincipal() {
-        tituloPersonalizado();
-        System.out.println(Cor.YELLOW + "------------ BEM VINDO AO SISTEMA HOPEFULHARBOR ------------");
-        System.out.println("\nEscolha uma das operações a seguir:\n\n" +
-                "[1]- Controle de doações\n" +
-                "[2]- Administração\n" +
-                "[0]- Sair do programa \n");
+        tituloPersonalizado();            
+        System.out.println(
+                "+ ------------------------------------------------------------ +\n" +
+                "                            * MENU *                              \n" +
+                "+ ------------------------------------------------------------ +\n" +
+                "\nEscolha uma das operações a seguir:\n\n" +
+                "   [1] - Controle de doações\n" +
+                "   [2] - Administração\n" +
+                "\n   [0] - Sair do programa \n" +
+                "\n+ ------------------------------------------------------------ +\n\n");
         return selecionaOpcao();
     }
     
-    public static int escolherOpcaoMenuAdm() throws InterruptedException, IOException {
+    public static int escolherOpcaoMenuAdm(String nomeUsuario) throws InterruptedException, IOException {
         limpatela();
         tituloPersonalizado();
-        System.out.println(Cor.YELLOW + "------------ BEM VINDO, ADMINISTRADOR ------------\n");
+        System.out.println(Cor.YELLOW + "Bem vindo(a), " + nomeUsuario);
         System.out.println(
-            "\n[1]- Cadastrar usuário \n" +
-            "[2]- Exibir usuários cadastrados \n" +
-            "[3]- Alterar senha usuário \n" +
-            "[4]- Deletar usuário \n");
+            "\n[1] - Cadastrar usuário \n" +
+            "[2] - Exibir usuários cadastrados \n" +
+            "[3] - Alterar senha usuário \n" +
+            "[4] - Deletar usuário \n");
 
-    System.out.println("[0]- Sair \n");
+    System.out.println("[0] - Voltar \n");
     int so = selecionaOpcao();
     String senhaUsuario;
     
@@ -77,25 +76,26 @@ public class EntradaSaida {
             senhaUsuario =
             solicitarDadosCadastro("confirmação de senha");
             gu.adicionarUsuario(u, senhaUsuario);
-            escolherOpcaoMenuAdm();
+            escolherOpcaoMenuAdm(nomeUsuario);
         break;
         case 2: // Exibir usuários cadastrados
             limpatela();
             GestaoUsuarios.mostrarUsuariosCadastrados();
-            escolherOpcaoMenuAdm();
+            escolherOpcaoMenuAdm(nomeUsuario);
         break;
-
         case 3: // Alterar senha usuário
             limpatela();
+            GestaoUsuarios.mostrarUsuariosCadastrados();
             id = solicitarId();  
             gu.alterarSenhaUsuario(id); 
-            escolherOpcaoMenuAdm();    
+            escolherOpcaoMenuAdm(nomeUsuario);    
             break;
         case 4: // Excluir cadastro
             limpatela();
+            GestaoUsuarios.mostrarUsuariosCadastrados();
             id = solicitarId();  
             GestaoUsuarios.deletarCadastroUsuario(id);
-            escolherOpcaoMenuAdm();
+            escolherOpcaoMenuAdm(nomeUsuario);
         break;
     }
         
@@ -103,27 +103,26 @@ public class EntradaSaida {
 
     }
 
-    public static int escolherOpcaoMenuUsuario(String tipoUsuario) throws InterruptedException, IOException {
-        do {
+    public static int escolherOpcaoMenuUsuario(String nomeUsuario) throws InterruptedException, IOException {
         limpatela();
         tituloPersonalizado();
-        System.out.println("Bem vindo(a), " + tipoUsuario);
+        System.out.println("Bem vindo(a), " + nomeUsuario + "!");
         System.out.println( Cor.YELLOW +
-                "\n[1]- Cadastrar doação \n" +
-                "[2]- Visualizar doações cadastradas \n" +
-                "[3]- Alterar descrição \n" +
-                "[4]- Excluir cadastro \n" +
-                "[5]- Dar entrada no estoque \n" +
-                "[6]- Dar baixa no estoque \n" +
-                "[7]- Consultar doações em estoque por ID \n" +
-                "[8]- Consultar doações por categoria \n");
+                "\n[1] - Cadastrar doação \n" +
+                "[2] - Visualizar doações cadastradas \n" +
+                "[3] - Alterar descrição \n" +
+                "[4] - Excluir cadastro \n" +
+                "[5] - Dar entrada no estoque \n" +
+                "[6] - Dar baixa no estoque \n" +
+                "[7] - Consultar doações em estoque por ID \n" +
+                "[8] - Consultar doações por categoria \n");
         
-        System.out.println("[0]- Voltar \n");
+        System.out.println("[0] - Voltar \n");
         int so = selecionaOpcao();
-        if (tipoUsuario == "user" && so > 8) {
+        if (so > 8) {
             System.out.println(Cor.RED + "\nOpção inválida! Tente novamente.");
             Thread.sleep(2000);
-            escolherOpcaoMenuUsuario(tipoUsuario);
+            return 0;
         }
         
         switch (so) {
@@ -144,7 +143,7 @@ public class EntradaSaida {
                         break;
                         case 0:
                             limpatela();
-                            escolherOpcaoMenuUsuario(tipoUsuario);
+                            so = 0;
                         break;
                     }
                 } while (so != 0);
@@ -194,22 +193,21 @@ public class EntradaSaida {
             break;
             case 0: // Voltar ao menu principal
                 limpatela();
-                menuPrincipal();
-            break;
+               // menuPrincipal();
+               return 1;
+            //break;
         }
-    } while ( !existente);
-
-    return selecionaOpcao();
+    return 0;
 } 
 
     public static int escolherOpcaoMenuCategorias() throws InterruptedException, IOException { // Verificar
-
+        limpatela();
         System.out.print(Cor.YELLOW + "\nEscolha uma opção: \n\n" +
-                "[1]- Vestuário\n" +
-                "[2]- Alimento \n" +
-                "[3]- Móveis \n" +
-                "[4]- Dinheiro \n\n" +
-                "[0]- Voltar \n\n");
+                "[1] - Vestuário\n" +
+                "[2] - Alimento \n" +
+                "[3] - Móveis \n" +
+                "[4] - Dinheiro \n\n" +
+                "[0] - Voltar \n\n");
     
                
 

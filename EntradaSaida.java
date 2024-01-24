@@ -73,30 +73,33 @@ public class EntradaSaida {
             u.setNome(solicitarDadosCadastro("nome"));
             u.setLogin(solicitarDadosCadastro("login"));
             u.setSenha(solicitarDadosCadastro("senha"));
-            senhaUsuario =
-            solicitarDadosCadastro("confirmação de senha");
-            gu.adicionarUsuario(u, senhaUsuario);
-            escolherOpcaoMenuAdm(nomeUsuario);
+            senhaUsuario = solicitarDadosCadastro("confirmação de senha");
+            Usuario usuarioLogado = gu.buscarLogin(u.getLogin(), u.getSenha());
+            if (usuarioLogado == null) {
+                gu.adicionarUsuario(u, senhaUsuario);
+                return 0;
+            } else {
+                System.out.println(Cor.RED + "\nUsuário já cadastrado!");
+            }
         break;
         case 2: // Exibir usuários cadastrados
             limpatela();
             GestaoUsuarios.mostrarUsuariosCadastrados();
-            escolherOpcaoMenuAdm(nomeUsuario);
-        break;
+            return 0;
         case 3: // Alterar senha usuário
             limpatela();
             GestaoUsuarios.mostrarUsuariosCadastrados();
             id = solicitarId();  
             gu.alterarSenhaUsuario(id); 
-            escolherOpcaoMenuAdm(nomeUsuario);    
-            break;
+            return 0;
         case 4: // Excluir cadastro
             limpatela();
             GestaoUsuarios.mostrarUsuariosCadastrados();
             id = solicitarId();  
             GestaoUsuarios.deletarCadastroUsuario(id);
-            escolherOpcaoMenuAdm(nomeUsuario);
-        break;
+            return 0;
+        case 0:
+            return 1;
     }
         
     return 0;

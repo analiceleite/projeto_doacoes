@@ -32,9 +32,9 @@ public class GestaoEstoque {
   public static void mostrarDoacoesCadastradas()
       throws InterruptedException, IOException {
     EntradaSaida.limpatela();
-    System.out.println("\n-------------------------- \n"
+    System.out.println("\n--------------------------\n"
         + "\n   Doações cadastradas:\n " +
-        "\n-------------------------- \n");
+        "\n--------------------------");
 
     for (Doacao d : doacoesCadastradas) {
       if (d.categoria != "Dinheiro") {
@@ -47,8 +47,7 @@ public class GestaoEstoque {
                 d.descricao +
                 "\nQuantidade: " +
                 d.quantidade +
-                "\n" +
-                "--------------------------");
+                "\n\n---");
       }
 
       if (d.categoria == "Dinheiro") {
@@ -64,7 +63,7 @@ public class GestaoEstoque {
                 d.descricao +
                 "\nValor: " +
                 valorFormatado +
-                "\n");
+                "\n\n---");
       }
     }
 
@@ -92,7 +91,7 @@ public class GestaoEstoque {
                 d.descricao +
                 "\nQuantidade: " +
                 d.quantidade +
-                "\n");
+                "\n\n---");
       }
 
       if (d.categoria == "Dinheiro") {
@@ -108,7 +107,7 @@ public class GestaoEstoque {
                 d.descricao +
                 "\nValor: " +
                 valorFormatado +
-                "\n");
+                "\n\n---");
       }
     }
 

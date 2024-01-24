@@ -155,12 +155,14 @@ public class EntradaSaida {
                 GestaoEstoque.mostrarDoacoesCadastradas();
             break;
             case 3: // Alterar descrição doação
-                limpatela();
+            limpatela();
+            GestaoEstoque.mostrarDoacoesCadastradas();
                 id = solicitarId();  
                 GestaoEstoque.alterarDescricaoDoacao(id);
             break;
             case 4: // Deletar doação
                 limpatela();
+                GestaoEstoque.mostrarDoacoesCadastradas();
                 id = solicitarId();
                 GestaoEstoque.deletarDoacao(id);
             break;
@@ -175,7 +177,7 @@ public class EntradaSaida {
             break;
             case 6: // Dar baixa em doações para o estoque
                 limpatela();
-                GestaoEstoque.mostrarDoacoesCadastradas();
+                GestaoEstoque.mostrarDoacoesCadastradasEstoque();
                 id = solicitarId();
                 int qtdSaida = 0;
                 System.out.println("\nQuantidade do produto que deseja dar baixa: ");
@@ -184,12 +186,14 @@ public class EntradaSaida {
             break;
             case 7: // Consultar doações em estoque por ID
                 limpatela();
+                GestaoEstoque.mostrarDoacoesCadastradasEstoque();
                 id = solicitarId();
                 GestaoEstoque.mostrarDoacoesCadastradasPorId(id);
             break;
             case 8: // Consultar doações em estoque por categoria
                 limpatela();
                 int opCategoria = 0;
+                GestaoEstoque.mostrarDoacoesCadastradasEstoque();
                 System.out.print("Insira a categoria que deseja exibir:\n ");
                 opCategoria = escolherOpcaoMenuCategorias();
                 GestaoEstoque.mostrarDoacoesCadastradasPorCategoria(opCategoria);

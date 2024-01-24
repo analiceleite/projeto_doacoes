@@ -162,7 +162,7 @@ public class EntradaSaida {
             break;
             case 4: // Deletar doação
                 limpatela();
-                GestaoEstoque.mostrarDoacoesCadastradas();
+                GestaoEstoque.mostrarDoacoesCadastradasEstoque();
                 id = solicitarId();
                 GestaoEstoque.deletarDoacao(id);
             break;

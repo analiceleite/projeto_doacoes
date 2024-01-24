@@ -119,6 +119,7 @@ public class GestaoEstoque {
     }
   }
 
+
   // Editar descrição doação
   public static String alterarDescricaoDoacao(int id) {
     for (Doacao d : doacoesCadastradas) {
@@ -176,15 +177,14 @@ public class GestaoEstoque {
       if (d.id == id) {
         doacoesCadastradas.remove(i);
         deletado = true;
+        System.out.println("\nCadastro removido com sucesso!");
+      } else {
+        deletado = false;
+        System.out.println(deletado);
+        System.out.println(Cor.RED + "Não foi possível remover o cadastro.");
+        System.exit(0);
       }
     }
-
-    if (deletado) {
-      System.out.println("\nCadastro removido com sucesso!");
-    } else {
-      System.out.println(Cor.RED + "Não foi possível remover o cadastro.");
-    }
-
     return "";
   }
 

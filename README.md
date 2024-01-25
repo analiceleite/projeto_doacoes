@@ -1,7 +1,7 @@
 # HopefulHarbor
  Este sistema destina-se ao controle de doações para instituições sem fins lucrativos, como ONG's, por exemplo.
 
-# Funções do sistema
+<h2> Funções do sistema </h2>
 -> Login
   : * Usuário
       1 - Cadastrar doação
@@ -26,15 +26,13 @@
       8 - Voltar ao menu principal
       0 - Sair do programa
       
-# Manual do usuário
+<h2> Manual do usuário </h2>
 
---- MANUAL DO USUÁRIO
-
-    1.Como faço para acessar o sistema?
+   1. Como faço para acessar o sistema?
 
     Você pode acessar o sistema utilizando seu login e senha fornecidos pelo administrador. Caso ainda não tenha um, entre em contato com o administrador para obter suas credenciais.
     
-    2. Funções do Administrador:
+   2. Funções do Administrador:
 
     2.1 Cadastrar Usuário [1]:
 
@@ -52,7 +50,7 @@
 
     Remove um usuário do sistema. Informe o nome do usuário que deseja excluir.
     
-    3. Funções do Usuário:
+   3. Funções do Usuário:
 
     3.1 Cadastrar Doação [1]:
 
@@ -86,13 +84,72 @@
 
     Veja a lista de doações filtradas por categoria. Informe a categoria desejada.
     
-    4. Dicas Gerais:
+   4. Dicas Gerais:
 
     Sempre mantenha suas credenciais de login seguras e não compartilhe com outros usuários.
     Ao realizar operações sensíveis, como deletar usuários ou doações, confirme suas ações para evitar erros.
     Em caso de dúvidas ou problemas, entre em contato com o administrador do sistema para obter suporte.
     Esse manual serve como um guia básico para o uso do sistema. 
 
-# Manual técnico 
+<h2> Manual de instalação JDK </h2> 
+   
+<h3> Instalação da JDK no Windows: </h3> 
+          
+    Baixar o JDK:
+    
+    Acesse o site oficial da Oracle JDK: Oracle JDK Downloads.
+    Baixe a versão mais recente do JDK para Windows.
+    
+    Executar o Instalador:
+    
+    Após o download, execute o instalador clicando duas vezes no arquivo baixado.
+    Siga as instruções do assistente de instalação.
+    
+    Configurar as Variáveis de Ambiente:
+    
+    Após a instalação, é necessário configurar as variáveis de ambiente.
+    Abra o "Painel de Controle" -> "Sistema e Segurança" -> "Sistema" -> "Configurações Avançadas do Sistema".
+    Clique em "Variáveis de Ambiente".
+    
+    Em "Variáveis do Sistema", clique em "Novo" e adicione uma nova variável chamada JAVA_HOME com o caminho para o diretório de instalação do JDK (ex: C:\Program Files\Java\jdk- 
+    15.0.2).
+    Edite a variável "Path" e adicione %JAVA_HOME%\bin ao final.
+    
+    Verificar a Instalação:
+    
+    Abra um prompt de comando e digite java -version e javac -version. Isso deve exibir as versões do Java e do compilador Java, confirmando que a instalação foi bem-sucedida.
+    
+    Instalação da JDK no Linux:
+    
+    Atualizar o Sistema:
+    
+    Abra um terminal e execute os seguintes comandos para garantir que o sistema esteja atualizado:
+    bash
+    Copy code
+    sudo apt update
+    sudo apt upgrade
+    Instalar o JDK:
+    
+    Execute o seguinte comando para instalar o OpenJDK, uma implementação gratuita e de código aberto do JDK:
+    bash
+    Copy code
+    sudo apt install default-jdk
+    Configurar as Variáveis de Ambiente (Opcional):
+    
+    Em alguns casos, as variáveis de ambiente já são configuradas automaticamente. Caso contrário, você pode adicionar as seguintes linhas ao final do arquivo ~/.bashrc ou 
+    ~/.zshrc:
+    bash
+    Copy code
+    export JAVA_HOME=/usr/lib/jvm/default-java
+    export PATH=$PATH:$JAVA_HOME/bin
+    Use source ~/.bashrc ou source ~/.zshrc para aplicar as alterações imediatamente.
+    Verificar a Instalação:
+    
+    No terminal, execute java -version e javac -version para verificar se o Java e o compilador Java foram instalados corretamente.
+
+
+
+
+
 
   

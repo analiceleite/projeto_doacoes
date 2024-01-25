@@ -1,30 +1,6 @@
 # HopefulHarbor
+
  Este sistema destina-se ao controle de doações para instituições sem fins lucrativos, como ONG's, por exemplo.
-
-<h2> Funções do sistema </h2>
--> Login
-  : * Usuário
-      1 - Cadastrar doação
-          : * Vestuário
-          : * Alimento 
-          : * Móveis
-          : * Dinheiro 
-          : * Voltar ao menu principal
-      2 - Visualizar minhas doações cadastradas
-      3 - Alterar descrição de alguma doação 
-      4 - Excluir cadastro
-
-  : * Admin
-      1 - Cadastrar doação
-      2 - Visualizar doações cadastradas 
-      3 - Alterar descrição de alguma doação 
-      4 - Excluir cadastro
-      5 - Dar entrada em doações para o estoque
-      6 - Dar baixa em doações para o estoque 
-      6 - Consultar doações em estoque por ID 
-      7 - Consultar doações por categoria
-      8 - Voltar ao menu principal
-      0 - Sair do programa
       
 <h2> Manual do usuário </h2>
 

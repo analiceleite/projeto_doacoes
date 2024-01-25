@@ -2,72 +2,14 @@
 
  Este sistema destina-se ao controle de doações para instituições sem fins lucrativos, como ONG's, por exemplo.
       
-<h2> Manual do usuário </h2>
+<h2> Manual de utilização</h2>
 
-Como faço para acessar o sistema?
-
-    Você pode acessar o sistema utilizando seu login e senha fornecidos pelo administrador. Caso ainda não tenha um, entre em contato com o administrador para obter suas credenciais.
-    
-Funções do Administrador:
-
-    2.1 Cadastrar Usuário [1]:
-
-    O administrador pode adicionar novos usuários ao sistema. Forneça as informações necessárias, como nome, senha, e atribua as permissões adequadas.
-    
-    2.2 Exibir Usuários Cadastrados [2]:
-
-    Visualize a lista de todos os usuários cadastrados no sistema.
-    
-    2.3 Alterar Senha do Usuário [3]:
-
-    Permite ao administrador alterar a senha de um usuário específico. Informe o nome do usuário e a nova senha desejada.
-    
-    2.4 Deletar Usuário [4]:
-
-    Remove um usuário do sistema. Informe o nome do usuário que deseja excluir.
-    
-Funções do Usuário:
-
-    3.1 Cadastrar Doação [1]:
-
-    Após o login, o usuário pode adicionar novas doações ao sistema. Forneça informações como descrição, categoria e quantidade.
-    
-    3.2 Exibir Doações Cadastradas [2]:
-
-    Visualize a lista de todas as doações cadastradas por você.
-    
-    3.3 Alterar Descrição da Doação [3]:
-
-    Permite ao usuário modificar a descrição de uma doação específica. Informe o ID da doação e a nova descrição desejada.
-    
-    3.4 Excluir Cadastro [4]:
-
-    Remove uma doação cadastrada. Informe o ID da doação que deseja excluir.
-    
-    3.5 Dar Entrada no Estoque [5]:
-
-    Adiciona mais unidades de uma doação ao estoque. Informe o ID da doação e a quantidade a ser adicionada.
-    
-    3.6 Dar Baixa no Estoque [6]:
-
-    Remove unidades de uma doação do estoque. Informe o ID da doação e a quantidade a ser removida.
-    
-    3.7 Consultar Doações em Estoque por ID [7]:
-
-    Visualize as informações de uma doação específica no estoque. Informe o ID da doação desejada.
-    
-    3.8 Consultar Doações por Categoria [8]:
-
-    Veja a lista de doações filtradas por categoria. Informe a categoria desejada.
-    
-Dicas Gerais:
-
-    Sempre mantenha suas credenciais de login seguras e não compartilhe com outros usuários.
-    Ao realizar operações sensíveis, como deletar usuários ou doações, confirme suas ações para evitar erros.
-    Em caso de dúvidas ou problemas, entre em contato com o administrador do sistema para obter suporte.
-    Esse manual serve como um guia básico para o uso do sistema. 
+<p>Tanto o manual de usuário quanto o de utilização técnica estão no link abaixo.</p>
+<a href= "manual_usuario">Documentação</a>
 
 <h2> Manual de instalação JDK </h2> 
+
+<p>Para depurar este código, é necessário ter a JDK (Java Development Kit) instalada na sua máquina. Segue manual de instalação: </p>
    
 <h3> Instalação da JDK no Windows: </h3> 
           

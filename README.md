@@ -4,11 +4,11 @@
       
 <h2> Manual do usuário </h2>
 
-   1. Como faço para acessar o sistema?
+Como faço para acessar o sistema?
 
     Você pode acessar o sistema utilizando seu login e senha fornecidos pelo administrador. Caso ainda não tenha um, entre em contato com o administrador para obter suas credenciais.
     
-   2. Funções do Administrador:
+Funções do Administrador:
 
     2.1 Cadastrar Usuário [1]:
 
@@ -26,7 +26,7 @@
 
     Remove um usuário do sistema. Informe o nome do usuário que deseja excluir.
     
-   3. Funções do Usuário:
+Funções do Usuário:
 
     3.1 Cadastrar Doação [1]:
 
@@ -60,7 +60,7 @@
 
     Veja a lista de doações filtradas por categoria. Informe a categoria desejada.
     
-   4. Dicas Gerais:
+Dicas Gerais:
 
     Sempre mantenha suas credenciais de login seguras e não compartilhe com outros usuários.
     Ao realizar operações sensíveis, como deletar usuários ou doações, confirme suas ações para evitar erros.
@@ -71,17 +71,17 @@
    
 <h3> Instalação da JDK no Windows: </h3> 
           
-    Baixar o JDK:
+   Baixar o JDK:
     
     Acesse o site oficial da Oracle JDK: Oracle JDK Downloads.
     Baixe a versão mais recente do JDK para Windows.
     
-    Executar o Instalador:
+   Executar o Instalador:
     
     Após o download, execute o instalador clicando duas vezes no arquivo baixado.
     Siga as instruções do assistente de instalação.
     
-    Configurar as Variáveis de Ambiente:
+   Configurar as Variáveis de Ambiente:
     
     Após a instalação, é necessário configurar as variáveis de ambiente.
     Abra o "Painel de Controle" -> "Sistema e Segurança" -> "Sistema" -> "Configurações Avançadas do Sistema".
@@ -91,13 +91,13 @@
     15.0.2).
     Edite a variável "Path" e adicione %JAVA_HOME%\bin ao final.
     
-    Verificar a Instalação:
+   Verificar a Instalação:
     
     Abra um prompt de comando e digite java -version e javac -version. Isso deve exibir as versões do Java e do compilador Java, confirmando que a instalação foi bem-sucedida.
     
-    Instalação da JDK no Linux:
+   <h3>Instalação da JDK no Linux:</h3>
     
-    Atualizar o Sistema:
+   Atualizar o Sistema:
     
     Abra um terminal e execute os seguintes comandos para garantir que o sistema esteja atualizado:
     bash

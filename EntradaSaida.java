@@ -96,7 +96,7 @@ public class EntradaSaida {
             limpatela();
             GestaoUsuarios.mostrarUsuariosCadastrados();
             id = solicitarId();  
-            GestaoUsuarios.deletarCadastroUsuario(id);
+            System.out.println(GestaoUsuarios.deletarCadastroUsuario(id));
             return 0;
         case 0:
             return 1;
@@ -224,7 +224,7 @@ public class EntradaSaida {
          d.quantidade = Integer.parseInt(System.console().readLine("Insira a quantidade: "));
          d.categoria = "Vestuário";
          GestaoEstoque.cadastrarDoacao(d);
-         System.out.println("\nDoação cadastrada com sucesso!\n");
+         System.out.println(Cor.GREEN + "\nDoação cadastrada com sucesso!\n" + Cor.RESET);
          Thread.sleep(2000);
          limpatela();
         return 0;
@@ -236,7 +236,7 @@ public class EntradaSaida {
         d.quantidade = Integer.parseInt(System.console().readLine("Insira a quantidade: "));
         d.categoria = "Alimento";
         GestaoEstoque.cadastrarDoacao(d);
-        System.out.println("\nDoação cadastrada com sucesso!\n");
+        System.out.println(Cor.GREEN + "\nDoação cadastrada com sucesso!\n" + Cor.RESET);
         Thread.sleep(2000);
         limpatela();
        return 0;
@@ -248,7 +248,7 @@ public class EntradaSaida {
          d.quantidade = Integer.parseInt(System.console().readLine("Insira a quantidade: "));
          d.categoria = "Móveis";
          GestaoEstoque.cadastrarDoacao(d);
-         System.out.println("\nDoação cadastrada com sucesso!\n");
+         System.out.println(Cor.GREEN + "\nDoação cadastrada com sucesso!\n" + Cor.RESET);
          Thread.sleep(2000);
          limpatela();
         return 0;
@@ -263,7 +263,7 @@ public class EntradaSaida {
         d.quantidade = Integer.parseInt(System.console().readLine("Insira o valor: "));
         d.categoria = "Dinheiro";
         GestaoEstoque.cadastrarDoacao(d);
-        System.out.println("\nDoação cadastrada com sucesso!\n");
+        System.out.println(Cor.GREEN + "\nDoação cadastrada com sucesso!\n" + Cor.RESET);
         Thread.sleep(2000);
         limpatela();
     return 0;

@@ -47,6 +47,6 @@
 --- Pendências
 
 > Fazer validação de que a senha do usuário deve conter caractere especial a título de segurança;
-> Quando o usuário logar, aparecer bem vindo e o nome do usuário;
-> Alterar cor das linhas de comando - > ok!
+# OK > Quando o usuário logar, aparecer bem vindo e o nome do usuário; 
+# OK > Alterar cor das linhas de comando;
 > Verificar mensagem de confirmação ao deletar um usuário no login adm;

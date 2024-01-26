@@ -25,7 +25,7 @@ public class GestaoUsuarios {
         Senha = System.console().readLine("Confirme a senha novamente: ");
       } else {
         listaDeUsuarios.add(Usuario);
-        System.out.println(Cor.YELLOW + "\nUsuário cadastrado com sucesso!");
+        System.out.println(Cor.GREEN + "\nUsuário cadastrado com sucesso!"+Cor.RESET);
         break;
       }
     } while (!confirmarSenha);
@@ -81,7 +81,7 @@ public class GestaoUsuarios {
         u.setSenha(novaSenha);
 
         if (encontrado == true) {
-          System.out.println("\nSenha alterada com sucesso!");
+          System.out.println(Cor.GREEN + "\nSenha alterada com sucesso!"+Cor.RESET);
         } else {
           System.out.println("Não foi possível realizar a alteração da senha. Tente novamente.");
         }
@@ -96,9 +96,9 @@ public class GestaoUsuarios {
       Usuario u = listaDeUsuarios.get(i);
       if (u.getIdUsuario() == id) {
         listaDeUsuarios.remove(i);
-        return "Cadastro removido com sucesso!";
+        return Cor.GREEN + "Cadastro removido com sucesso!" + Cor.RESET;
       }
     }
-    return "ID não encontrado. Nenhum cadastro removido.";
+    return Cor.RED+"ID não encontrado. Nenhum cadastro removido."+Cor.RESET;
   }
 }

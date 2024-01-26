@@ -5,7 +5,7 @@
 <h2> Manual de utilização</h2>
 
 <p>Tanto o manual de usuário quanto o de utilização técnica estão no link abaixo.</p>
-<a href= "manual_usuario">Documentação</a>
+<a href= "[manual_usuario](https://github.com/analiceleite/projeto_estoque_linha_de_comando_java/blob/main/Manual.pdf)">Documentação</a>
 
 <h2> Manual de instalação JDK </h2> 
 
@@ -65,6 +65,14 @@
     
     No terminal, execute java -version e javac -version para verificar se o Java e o compilador Java foram instalados corretamente.
 
+   <h3>Ferramentas utilizadas</h3>
+
+   -> Java; 
+
+   <h3>Autores</h3>
+   
+   -> Analice de Moraes Leite; <br>
+   -> João Viktor Trindade.
 
 
 

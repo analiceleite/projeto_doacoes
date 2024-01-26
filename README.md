@@ -1,10 +1,10 @@
 # HopefulHarbor
 
- Este sistema destina-se ao controle de doações para instituições sem fins lucrativos, como ONG's, por exemplo.
+ Este sistema destina-se ao controle de doações para instituições sem fins lucrativos, como ONG's.
       
 <h2> Manual de utilização</h2>
 
-<p>Tanto o manual de usuário quanto o de utilização técnica estão no link abaixo.</p>
+<p>Tanto o manual de usuário administrador quanto o de utilização técnica estão no link abaixo.</p>
 <a href= "Manual.pdf">Documentação</a>
 
 <h2> Manual de instalação JDK </h2> 

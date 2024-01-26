@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,7 +33,7 @@ public class GestaoUsuarios {
   public static void cadastrarUsuarioAdmin() {
     Usuario u = new Usuario();
     u.idUsuario = 1;
-    u.setNome("Administrator");
+    u.setNome("Administrador");
     u.setLogin("admin");
     u.setSenha("admin");
     listaDeUsuarios.add(u);
@@ -94,6 +93,9 @@ public class GestaoUsuarios {
   public static String deletarCadastroUsuario(int id) {
     for (int i = 0; i < listaDeUsuarios.size(); i++) {
       Usuario u = listaDeUsuarios.get(i);
+      if (u.getIdUsuario() == 1) {
+        return "Não é possível excluir o cadastro de administrador";
+      }
       if (u.getIdUsuario() == id) {
         listaDeUsuarios.remove(i);
         return Cor.GREEN + "Cadastro removido com sucesso!" + Cor.RESET;

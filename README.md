@@ -5,7 +5,7 @@
 <h2> Manual de utilização</h2>
 
 <p>Tanto o manual de usuário quanto o de utilização técnica estão no link abaixo.</p>
-<a href= "[manual_usuario](https://github.com/analiceleite/projeto_estoque_linha_de_comando_java/blob/main/Manual.pdf)">Documentação</a>
+<a href= "Manual.pdf">Documentação</a>
 
 <h2> Manual de instalação JDK </h2> 
 

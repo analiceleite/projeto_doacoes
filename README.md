@@ -74,6 +74,8 @@
    -> Analice de Moraes Leite; <br>
    -> João Viktor Trindade.
 
+   <img src= "https://img.shields.io/badge/Status-Completed-green"/>
+
 
 
 

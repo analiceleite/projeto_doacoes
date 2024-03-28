@@ -69,10 +69,9 @@
 
    -> Java; 
 
-   <h3>Autores</h3>
+   <h3>Autora</h3>
    
-   -> Analice de Moraes Leite; <br>
-   -> João Viktor Trindade.
+   -> Analice de Moraes Leite <br>
 
    <img src= "https://img.shields.io/badge/Status-Completed-green"/>
 
